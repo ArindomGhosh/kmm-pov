@@ -1,7 +1,6 @@
 plugins {
     id("com.android.application")
     kotlin("android")
-    id("org.jetbrains.compose")
 }
 
 android {
@@ -24,6 +23,12 @@ android {
             isMinifyEnabled = false
         }
     }
+    buildFeatures{
+        compose = true
+    }
+    composeOptions{
+        kotlinCompilerExtensionVersion = libs.versions.androidxComposeCompiler.get()
+    }
     compileOptions {
         sourceCompatibility = JavaVersion.VERSION_17
         targetCompatibility = JavaVersion.VERSION_17
@@ -36,9 +41,16 @@ android {
 dependencies {
     implementation(project(":kmm:shared"))
     implementation(libs.androidx.activity.compose)
-    implementation(compose.foundation)
-    implementation(compose.ui)
-    debugImplementation(compose.uiTooling)
-    implementation(compose.preview)
-    implementation(compose.material)
+    implementation(platform(libs.androidx.compose.bom))
+    debugImplementation(platform(libs.androidx.compose.bom))
+    implementation(libs.androidx.compose.material)
+    implementation(libs.androidx.compose.ui)
+    implementation(libs.androidx.compose.ui.tooling.preview)
+    debugImplementation(libs.androidx.compose.ui.tooling)
+
+//    implementation(compose.foundation)
+//    implementation(compose.ui)
+//    debugImplementation(compose.uiTooling)
+//    implementation(compose.preview)
+//    implementation(compose.material)
 }

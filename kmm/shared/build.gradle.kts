@@ -1,7 +1,6 @@
 plugins {
     kotlin("multiplatform")
     id("com.android.library")
-//    id("org.jetbrains.compose")
 }
 
 kotlin {
@@ -14,19 +13,14 @@ kotlin {
     ).forEach {
         it.binaries.framework {
             baseName = "shared"
+            isStatic = true
         }
     }
 
     sourceSets {
         val commonMain by getting {
             dependencies {
-//                Todo: working on it
-//                implementation(compose.runtime)
-//                implementation(compose.foundation)
-//                implementation(compose.material)
-//                implementation(compose.ui)
-//                @OptIn(org.jetbrains.compose.ExperimentalComposeLibrary::class)
-//                implementation(compose.components.resources)
+
             }
         }
         val commonTest by getting {
@@ -34,22 +28,8 @@ kotlin {
                 implementation(kotlin("test"))
             }
         }
-//        @OptIn(org.jetbrains.kotlin.gradle.plugin.ExperimentalKotlinGradlePluginApi::class)
-//        invokeWhenCreated("androidDebug"){
-//            dependencies{
-//                implementation(compose.uiTooling)
-//            }
-//        }
 
-        val androidMain by getting {
-            dependencies {
-//                implementation(compose.preview)
-//                implementation(libs.androidx.activity.compose)
-//                implementation(libs.androidx.core.ktx)
-            }
-        }
-
-
+        val androidMain by getting
         val androidUnitTest by getting
         val iosX64Main by getting
         val iosArm64Main by getting
@@ -82,8 +62,4 @@ android {
         sourceCompatibility = JavaVersion.VERSION_17
         targetCompatibility = JavaVersion.VERSION_17
     }
-//    dependencies {
-//        implementation(compose.preview)
-//        debugImplementation(compose.uiTooling)
-//    }
 }

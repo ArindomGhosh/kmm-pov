@@ -22,7 +22,6 @@ class MainActivity : ComponentActivity() {
                     color = MaterialTheme.colors.background
                 ) {
                     GreetingView(Greeting().greet())
-//                   MainView()
                 }
             }
         }
@@ -34,12 +33,14 @@ fun GreetingView(text: String) {
     Text(text = text)
 }
 
-@Preview
+@Preview(
+    showBackground = true
+)
 @Composable
 fun DefaultPreview() {
-//    MyApplicationTheme {
+    MyApplicationTheme {
         GreetingView("Hello, Android!")
-//    }
+    }
 }
 
 
