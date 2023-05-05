@@ -1,23 +1,18 @@
 plugins {
     id("com.android.application")
     kotlin("android")
+    id("org.jetbrains.compose")
 }
 
 android {
-    namespace = "com.example.kmm_news.android"
+    namespace = "com.example.kmmnews.android"
     compileSdk = 33
     defaultConfig {
-        applicationId = "com.example.kmm_news.android"
+        applicationId = "com.example.kmmnews.android"
         minSdk = 24
         targetSdk = 33
         versionCode = 1
         versionName = "1.0"
-    }
-    buildFeatures {
-        compose = true
-    }
-    composeOptions {
-        kotlinCompilerExtensionVersion = "1.4.4"
     }
     packaging {
         resources {
@@ -39,11 +34,11 @@ android {
 }
 
 dependencies {
-    implementation(project(":shared"))
-    implementation("androidx.compose.ui:ui:1.4.0")
-    implementation("androidx.compose.ui:ui-tooling:1.4.0")
-    implementation("androidx.compose.ui:ui-tooling-preview:1.4.0")
-    implementation("androidx.compose.foundation:foundation:1.4.0")
-    implementation("androidx.compose.material:material:1.4.0")
-    implementation("androidx.activity:activity-compose:1.7.0")
+    implementation(project(":kmm:shared"))
+    implementation(libs.androidx.activity.compose)
+    implementation(compose.foundation)
+    implementation(compose.ui)
+    debugImplementation(compose.uiTooling)
+    implementation(compose.preview)
+    implementation(compose.material)
 }

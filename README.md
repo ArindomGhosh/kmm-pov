@@ -28,7 +28,7 @@ The goal of the project is to explore [KMM](https://kotlinlang.org/docs/multipla
 - :hammer: built-tool: build using gradle with [Gradle Kotlin DSL](https://docs.gradle.org/current/userguide/kotlin_dsl.html)
   - [build-logic](https://developer.squareup.com/blog/herding-elephants/): Creating gradle plugins to better manage dependencies across modules, more details in te link attached.
   - [versionCatalogs](https://docs.gradle.org/current/userguide/platforms.html#sub:version-catalog-declaration): Share dependency versions between projects.
-- :card_index_dividers: Impact on .apk and .ipa sizes wile sharing logic across platforms.
+- :card_index_dividers: Impact on .apk and .ipa sizes while sharing logic across platforms.
 
 ***Note: This is a work in progress project would keep adding contents as we build.***
   
