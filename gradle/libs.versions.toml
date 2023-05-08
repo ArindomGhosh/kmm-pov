@@ -1,12 +1,13 @@
 [versions]
 androidGradlePlugin = "8.0.1"
-kotlin = "1.8.21"
+kotlin = "1.8.20"
 ktor = "2.2.4"
 kotlinxCoroutines = "1.6.4"
 androidxActivity = "1.7.0"
 androidxCore = "1.9.0"
 androidxComposeBom="2023.05.00"
-androidxComposeCompiler = "1.4.7"
+androidxComposeCompiler = "1.4.6"
+jetbrainCompose = "1.4.0"
 
 [libraries]
 
@@ -53,3 +54,4 @@ android-library = { id = "com.android.library", version.ref = "androidGradlePlug
 kotlin-multiplatform = { id = "org.jetbrains.kotlin.multiplatform", version.ref = "kotlin" }
 kotlin-android = { id = "org.jetbrains.kotlin.android", version.ref = "kotlin" }
 kotlin-serialization = { id = "org.jetbrains.kotlin.plugin.serialization", version.ref = "kotlin" }
+jetbrains-compose = {id="org.jetbrains.compose", version.ref="jetbrainCompose"}

@@ -1,6 +1,7 @@
 plugins {
     id("com.android.application")
     kotlin("android")
+    alias(libs.plugins.jetbrains.compose)
 }
 
 android {
@@ -41,16 +42,9 @@ android {
 dependencies {
     implementation(project(":kmm:shared"))
     implementation(libs.androidx.activity.compose)
-    implementation(platform(libs.androidx.compose.bom))
-    debugImplementation(platform(libs.androidx.compose.bom))
-    implementation(libs.androidx.compose.material)
-    implementation(libs.androidx.compose.ui)
-    implementation(libs.androidx.compose.ui.tooling.preview)
-    debugImplementation(libs.androidx.compose.ui.tooling)
-
-//    implementation(compose.foundation)
-//    implementation(compose.ui)
-//    debugImplementation(compose.uiTooling)
-//    implementation(compose.preview)
-//    implementation(compose.material)
+    implementation(compose.foundation)
+    implementation(compose.ui)
+    debugImplementation(compose.uiTooling)
+    implementation(compose.preview)
+    implementation(compose.material)
 }

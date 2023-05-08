@@ -1,6 +1,7 @@
 plugins {
     kotlin("multiplatform")
     id("com.android.library")
+    alias(libs.plugins.jetbrains.compose)
 }
 
 kotlin {
@@ -20,7 +21,10 @@ kotlin {
     sourceSets {
         val commonMain by getting {
             dependencies {
-
+                implementation(compose.runtime)
+                implementation(compose.foundation)
+                implementation(compose.ui)
+                implementation(compose.material)
             }
         }
         val commonTest by getting {
