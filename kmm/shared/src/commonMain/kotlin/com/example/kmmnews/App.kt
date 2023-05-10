@@ -1,6 +1,5 @@
 package com.example.kmmnews
 
-import androidx.compose.foundation.layout.Arrangement
 import androidx.compose.foundation.layout.Column
 import androidx.compose.foundation.layout.fillMaxSize
 import androidx.compose.material.Button
@@ -10,6 +9,7 @@ import androidx.compose.material.Text
 import androidx.compose.runtime.Composable
 import androidx.compose.ui.Alignment
 import androidx.compose.ui.Modifier
+import com.example.news.View.NewsScreen
 
 @Composable
 fun App(){
@@ -18,6 +18,7 @@ fun App(){
         color = MaterialTheme.colors.background
     ) {
         GreetingView(Greeting().greet())
+        NewsScreen()
     }
 }
 @Composable

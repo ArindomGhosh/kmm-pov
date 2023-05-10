@@ -20,3 +20,4 @@ rootProject.name = "kmm-news"
 include(":androidApp")
 include(":kmm:shared")
 include(":kmm:core:network")
+include(":kmm:feature:news")

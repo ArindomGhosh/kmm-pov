@@ -6,15 +6,14 @@ plugins {
 
 kotlin {
     android()
-
+    
     listOf(
         iosX64(),
         iosArm64(),
         iosSimulatorArm64()
     ).forEach {
         it.binaries.framework {
-            baseName = "shared"
-            isStatic = true
+            baseName = "news"
         }
     }
 
@@ -25,7 +24,6 @@ kotlin {
                 implementation(compose.foundation)
                 implementation(compose.ui)
                 implementation(compose.material)
-                implementation(project(":kmm:feature:news"))
             }
         }
         val commonTest by getting {
@@ -33,7 +31,6 @@ kotlin {
                 implementation(kotlin("test"))
             }
         }
-
         val androidMain by getting
         val androidUnitTest by getting
         val iosX64Main by getting
@@ -58,7 +55,7 @@ kotlin {
 }
 
 android {
-    namespace = "com.example.kmmnews.shared"
+    namespace = "com.example.news"
     compileSdk = 33
     defaultConfig {
         minSdk = 24
