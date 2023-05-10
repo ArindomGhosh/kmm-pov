@@ -1,6 +1,5 @@
 plugins {
-    kotlin("multiplatform")
-    id("com.android.library")
+    id("com.kmmnews.kotlin.multiplatform")
     alias(libs.plugins.jetbrains.compose)
 }
 
@@ -58,12 +57,4 @@ kotlin {
 
 android {
     namespace = "com.example.kmmnews.shared"
-    compileSdk = 33
-    defaultConfig {
-        minSdk = 24
-    }
-    compileOptions {
-        sourceCompatibility = JavaVersion.VERSION_17
-        targetCompatibility = JavaVersion.VERSION_17
-    }
 }
