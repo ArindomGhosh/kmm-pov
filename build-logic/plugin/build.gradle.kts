@@ -23,5 +23,26 @@ dependencies {
 }
 
 gradlePlugin {
-
+    plugins {
+        register("kmmAndroidLibrary"){
+            id="com.kmmnews.android.library"
+            implementationClass ="AndroidLibraryConvention"
+        }
+        register("kmmAndroidApplication"){
+            id="com.kmmnews.android.application"
+            implementationClass ="AndroidApplicationConvention"
+        }
+        register("kmmJetpackCompose"){
+            id="com.kmmnews.android.application.compose"
+            implementationClass="AndroidComposeApplicationConvention"
+        }
+        register("kotlinMultiplatform"){
+            id="com.kmmnews.kotlin.multiplatform"
+            implementationClass ="KotlinMultiplatformConvention"
+        }
+        register("kotlinMultiplatformLibrary"){
+            id="com.kmmnews.kotlin.multiplatform.library"
+            implementationClass ="KotlinMultiplatformLibraryConvention"
+        }
+    }
 }
