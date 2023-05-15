@@ -1,27 +1,8 @@
 plugins {
-    kotlin("multiplatform")
-    id("com.android.library")
+    id("com.kmmnews.kotlin.multiplatform.library")
 }
 
 kotlin {
-    android {
-        compilations.all {
-            kotlinOptions {
-                jvmTarget = "1.8"
-            }
-        }
-    }
-
-    listOf(
-        iosX64(),
-        iosArm64(),
-        iosSimulatorArm64()
-    ).forEach {
-        it.binaries.framework {
-            baseName = "network"
-        }
-    }
-
     sourceSets {
         val commonMain by getting
         val commonTest by getting {
@@ -54,8 +35,4 @@ kotlin {
 
 android {
     namespace = "com.example.kmmnews.network"
-    compileSdk = 33
-    defaultConfig {
-        minSdk = 24
-    }
 }

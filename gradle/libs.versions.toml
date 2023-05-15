@@ -1,13 +1,21 @@
 [versions]
+applicationVersionCode = "1"
+applicationVersionName = "1.0"
+compileSdk = "33"
+minSdk = "24"
 androidGradlePlugin = "8.0.1"
 kotlin = "1.8.20"
 ktor = "2.2.4"
 kotlinxCoroutines = "1.6.4"
 androidxActivity = "1.7.0"
 androidxCore = "1.9.0"
-androidxComposeBom="2023.05.00"
+androidxComposeBom = "2023.05.00"
 androidxComposeCompiler = "1.4.6"
 jetbrainCompose = "1.4.0"
+koin = "3.4.0"
+koinAndroid = "3.4.4"
+koinAndroidCompose = "3.4.0"
+koinCompose = "1.0.0"
 
 [libraries]
 
@@ -41,6 +49,12 @@ ktor-client-mock = { group = "io.ktor", name = "ktor-client-mock", version.ref =
 androidx-activity-compose = { group = "androidx.activity", name = "activity-compose", version.ref = "androidxActivity" }
 androidx-core-ktx = { module = "androidx.core:core-ktx", version.ref = "androidxCore" }
 
+#koin
+koin-core = { group = "io.insert-koin", name = "koin-core", version.ref = "koin" }
+koin-android = { group = "io.insert-koin", name = "koin-android", version.ref = "koinAndroid" }
+koin-android-compose = { group = "io.insert-koin", name = "koin-androidx-compose", version.ref = "koinAndroidCompose" }
+koin-compose = { group = "io.insert-koin", name = "koin-compose", version.ref = "koinCompose" }
+
 # Dependencies of the included build-logic
 android-gradlePlugin = { group = "com.android.tools.build", name = "gradle", version.ref = "androidGradlePlugin" }
 kotlin-gradlePlugin = { group = "org.jetbrains.kotlin", name = "kotlin-gradle-plugin", version.ref = "kotlin" }
@@ -54,4 +68,4 @@ android-library = { id = "com.android.library", version.ref = "androidGradlePlug
 kotlin-multiplatform = { id = "org.jetbrains.kotlin.multiplatform", version.ref = "kotlin" }
 kotlin-android = { id = "org.jetbrains.kotlin.android", version.ref = "kotlin" }
 kotlin-serialization = { id = "org.jetbrains.kotlin.plugin.serialization", version.ref = "kotlin" }
-jetbrains-compose = {id="org.jetbrains.compose", version.ref="jetbrainCompose"}
+jetbrains-compose = { id = "org.jetbrains.compose", version.ref = "jetbrainCompose" }
