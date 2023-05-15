@@ -1,22 +1,9 @@
 plugins {
-    kotlin("multiplatform")
-    id("com.android.library")
+    id("com.kmmnews.kotlin.multiplatform.library")
     alias(libs.plugins.jetbrains.compose)
 }
 
 kotlin {
-    android()
-    
-    listOf(
-        iosX64(),
-        iosArm64(),
-        iosSimulatorArm64()
-    ).forEach {
-        it.binaries.framework {
-            baseName = "news"
-        }
-    }
-
     sourceSets {
         val commonMain by getting {
             dependencies {
@@ -24,6 +11,7 @@ kotlin {
                 implementation(compose.foundation)
                 implementation(compose.ui)
                 implementation(compose.material)
+                implementation(project(":kmm:core:ui"))
             }
         }
         val commonTest by getting {
@@ -55,13 +43,5 @@ kotlin {
 }
 
 android {
-    namespace = "com.example.news"
-    compileSdk = 33
-    defaultConfig {
-        minSdk = 24
-    }
-    compileOptions {
-        sourceCompatibility = JavaVersion.VERSION_17
-        targetCompatibility = JavaVersion.VERSION_17
-    }
+    namespace = "com.example.kmmnews.feature.news"
 }

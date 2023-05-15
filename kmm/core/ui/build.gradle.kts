@@ -1,10 +1,19 @@
 plugins {
     id("com.kmmnews.kotlin.multiplatform.library")
+    alias(libs.plugins.jetbrains.compose)
 }
 
 kotlin {
+
     sourceSets {
-        val commonMain by getting
+        val commonMain by getting {
+            dependencies{
+                implementation(compose.runtime)
+                implementation(compose.foundation)
+                implementation(compose.ui)
+                implementation(compose.material)
+            }
+        }
         val commonTest by getting {
             dependencies {
                 implementation(kotlin("test"))
@@ -34,5 +43,5 @@ kotlin {
 }
 
 android {
-    namespace = "com.example.kmmnews.core.network"
+    namespace = "com.example.kmmnews.core.ui"
 }

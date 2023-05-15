@@ -14,6 +14,7 @@ kotlin {
         it.binaries.framework {
             baseName = "shared"
             isStatic = true
+            export(project(":kmm:feature:news"))
         }
     }
 
@@ -24,7 +25,7 @@ kotlin {
                 implementation(compose.foundation)
                 implementation(compose.ui)
                 implementation(compose.material)
-                implementation(project(":kmm:feature:news"))
+                api(project(":kmm:feature:news"))
             }
         }
         val commonTest by getting {
