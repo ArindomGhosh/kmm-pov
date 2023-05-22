@@ -2,6 +2,10 @@
 ## What is KMM? :confused:
 :point_right: **[KMM](https://kotlinlang.org/docs/multiplatform.html)** is a framework developed and maintained by [jetbrains](https://www.jetbrains.com/) designed to share code across platforms primarily targeting: Android, iOS, Desktop, Web. So that the developers can share their modules developed in [Kotlin](https://kotlinlang.org/) across different platform :heart_eyes:.
 
+## KMM Layers
+<img width="806" alt="Screenshot 2023-05-22 at 11 52 49 AM" src="https://github.com/Deloitte/dd-poc-kmm/assets/70739057/e69e0ea4-ad7b-47ea-9add-665d00ef194b">
+
+
 ## How does it work and how its different from other Cross-Platform application? :monocle_face:
 :point_right: First of all **KMM** is not a *Cross Platform* in a conventional sense :astonished:. KMM relies on [Kotlin](https://kotlinlang.org/) compiler to generate binaries for native platfoms using **Kotlin compiler backend** which could be called from **Native Platforms** :smirk:.\
 In short don't re-invent the :wheel_of_dharma:, shareing as much as you can while developing your application using your native framework('s).\
@@ -29,6 +33,12 @@ The goal of the project is to explore [KMM](https://kotlinlang.org/docs/multipla
   - [build-logic](https://developer.squareup.com/blog/herding-elephants/): Creating gradle plugins to better manage dependencies across modules, more details in te link attached.
   - [versionCatalogs](https://docs.gradle.org/current/userguide/platforms.html#sub:version-catalog-declaration): Share dependency versions between projects.
 - :card_index_dividers: Impact on .apk and .ipa sizes while sharing logic across platforms.
+
+### KMM News architecture
+
+<img width="1126" alt="Screenshot 2023-05-22 at 12 03 55 PM" src="https://github.com/Deloitte/dd-poc-kmm/assets/70739057/cb3010e9-af50-4112-9ed9-c06fba94fbf1">
+
+
 
 ***Note: This is a work in progress project would keep adding contents as we build.***
   
