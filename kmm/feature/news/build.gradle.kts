@@ -11,7 +11,12 @@ kotlin {
                 implementation(compose.foundation)
                 implementation(compose.ui)
                 implementation(compose.material)
+                implementation(libs.koin.core)
+//                implementation(libs.koin.compose)
+                implementation(libs.kotlinx.coroutines.core)
                 implementation(project(":kmm:core:ui"))
+                implementation(project(":kmm:core:common"))
+                implementation(project(":kmm:domain:news"))
             }
         }
         val commonTest by getting {

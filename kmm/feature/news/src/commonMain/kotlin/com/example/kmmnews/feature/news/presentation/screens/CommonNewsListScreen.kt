@@ -7,7 +7,10 @@ import com.example.kmmnews.core.ui.KmmNewsTheme
 import com.example.kmmnews.feature.news.models.NewsArticle
 
 @Composable
-fun CommonNewsScreen() {
+fun CommonNewsScreen(
+//    newsScreenViewModel: NewsScreenViewModel
+) {
+//    val myService = koinInject<MyService>()
     val articles = listOf(
         NewsArticle(
             title = "1st article",
