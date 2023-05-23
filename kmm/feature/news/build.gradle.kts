@@ -14,6 +14,7 @@ kotlin {
                 implementation(libs.koin.core)
 //                implementation(libs.koin.compose)
                 implementation(libs.kotlinx.coroutines.core)
+//                implementation("io.insert-koin:koin-compose:1.0.2")
                 implementation(project(":kmm:core:ui"))
                 implementation(project(":kmm:core:common"))
                 implementation(project(":kmm:domain:news"))
@@ -24,7 +25,11 @@ kotlin {
                 implementation(kotlin("test"))
             }
         }
-        val androidMain by getting
+        val androidMain by getting {
+            dependencies{
+                implementation(libs.koin.androidx.compose)
+            }
+        }
         val androidUnitTest by getting
         val iosX64Main by getting
         val iosArm64Main by getting

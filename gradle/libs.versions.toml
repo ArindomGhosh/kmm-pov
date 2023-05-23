@@ -54,7 +54,7 @@ androidx-core-ktx = { module = "androidx.core:core-ktx", version.ref = "androidx
 #koin
 koin-core = { group = "io.insert-koin", name = "koin-core", version.ref = "koin" }
 koin-android = { group = "io.insert-koin", name = "koin-android", version.ref = "koinAndroid" }
-koin-android-compose = { group = "io.insert-koin", name = "koin-androidx-compose", version.ref = "koinAndroidCompose" }
+koin-androidx-compose = { group = "io.insert-koin", name = "koin-androidx-compose", version.ref = "koinAndroidCompose" }
 koin-compose = { group = "io.insert-koin", name = "koin-compose", version.ref = "koinCompose" }
 
 # Dependencies of the included build-logic

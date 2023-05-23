@@ -17,7 +17,7 @@ fun NewsArticleList(articles: List<NewsArticle>) {
     LazyColumn {
         items(articles.size) { index ->
 
-            NewsArticleItem(article = articles.get(index)) { _, _ ->
+            NewsArticleItem(article = articles[index]) { _, _ ->
                 // Show the modal dialog
             }
         }

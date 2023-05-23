@@ -7,5 +7,4 @@ import org.koin.dsl.module
 val viewModelModule = module {
     includes(domainModule)
     factory { NewsScreenViewModel(get()) }
-    FeatureComponent()
 }

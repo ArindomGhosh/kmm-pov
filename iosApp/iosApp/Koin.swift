@@ -19,3 +19,28 @@ extension KoinApplication {
         shared
     }
 }
+
+extension KoinApplication{
+    private static let keyPaths: [PartialKeyPath<Koin>]=[
+        \.getNewsScreenViewModel,
+    ]
+    
+    static func inject<T>()-> T{
+        shared.inject()
+    }
+    
+    func inject<T>()->T{
+        for partialPathKey in Self.keyPaths{
+            guard let keyPath = partialPathKey as? KeyPath<Koin, T> else {continue}
+            return koin[keyPath: keyPath]
+        }
+        fatalError("\(T.self) not registered with KoinApplication")
+    }
+}
+
+@propertyWrapper
+struct LazyKoin<T>{
+    lazy var wrappedValue:T = {KoinApplication.shared.inject()}()
+    
+    init(){ }
+}

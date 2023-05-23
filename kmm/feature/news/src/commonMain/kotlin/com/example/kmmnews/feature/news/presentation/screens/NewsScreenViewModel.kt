@@ -24,40 +24,37 @@ sealed interface NewsUiState {
 class NewsScreenViewModel(
     private val getNationalNews: GetNationalNews
 ) : ViewModel() {
+
     private val _uiState = MutableStateFlow<NewsUiState>(NewsUiState.Loading)
 
     val currentUiState = _uiState.value
 
     val uiState: StateFlow<NewsUiState> = _uiState.asStateFlow()
-
+    init {
+        viewModelScope.launch {
+            getNewsForCountry("Some counrty")
+        }
+    }
     fun getNewsForCountry(countryName: String) {
         viewModelScope.launch {
             getNationalNews.invoke(countryName)
                 .onStart {
-                    _uiState.update {
-                        NewsUiState.Loading
-                    }
+                    _uiState.value= NewsUiState.Loading
                 }
                 .onEach { entity->
                     when (entity){
-                        is Entity.Fail -> _uiState.update {
-                            NewsUiState.Error(
-                                entity.err
-                            )
-                        }
-                        is Entity.Success ->  _uiState.update {
-                            NewsUiState.Loaded(
-                                entity.data
-                            )
-                        }
+                        is Entity.Fail -> _uiState.value= NewsUiState.Error(
+                            entity.err
+                        )
+                        is Entity.Success ->  _uiState.value=  NewsUiState.Loaded(
+                            entity.data
+                        )
                     }
                 }
                 .catch {
-                    _uiState.update {
-                        NewsUiState.Error(
-                            ErrorEntity()
-                        )
-                    }
+                    _uiState.value= NewsUiState.Error(
+                        ErrorEntity()
+                    )
                 }
                 .collect()
         }
