@@ -22,4 +22,6 @@ dependencies {
     debugImplementation(compose.uiTooling)
     implementation(compose.preview)
     implementation(compose.material)
+    implementation(libs.koin.android)
+    implementation(libs.koin.androidx.compose)
 }

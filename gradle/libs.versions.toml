@@ -6,16 +6,17 @@ minSdk = "24"
 androidGradlePlugin = "8.0.1"
 kotlin = "1.8.20"
 ktor = "2.2.4"
-kotlinxCoroutines = "1.6.4"
+kotlinxCoroutines = "1.7.1"
 androidxActivity = "1.7.0"
 androidxCore = "1.9.0"
 androidxComposeBom = "2023.05.00"
 androidxComposeCompiler = "1.4.6"
 jetbrainCompose = "1.4.0"
 koin = "3.4.0"
-koinAndroid = "3.4.4"
-koinAndroidCompose = "3.4.0"
-koinCompose = "1.0.0"
+koinAndroid = "3.4.0"
+koinAndroidCompose = "3.4.4"
+koinCompose = "1.0.2"
+lifecycle="2.6.1"
 
 [libraries]
 
@@ -27,6 +28,7 @@ androidx-compose-material = { group = "androidx.compose.material", name = "mater
 androidx-compose-ui-test-junit4 = { group = "androidx.compose.ui", name = "ui-test-junit4" }
 androidx-compose-ui-tooling = { group = "androidx.compose.ui", name = "ui-tooling" }
 androidx-compose-ui-test-manifest = { group = "androidx.compose.ui", name = "ui-test-manifest" }
+androidx-lifecycle-viewmodel = { module = "androidx.lifecycle:lifecycle-viewmodel-ktx", version.ref = "lifecycle" }
 
 # kotlin
 kotlin-std-lib = { group = "org.jetbrains.kotlin", name = "kotlin-stdlib", version.ref = "kotlin" }
@@ -52,7 +54,7 @@ androidx-core-ktx = { module = "androidx.core:core-ktx", version.ref = "androidx
 #koin
 koin-core = { group = "io.insert-koin", name = "koin-core", version.ref = "koin" }
 koin-android = { group = "io.insert-koin", name = "koin-android", version.ref = "koinAndroid" }
-koin-android-compose = { group = "io.insert-koin", name = "koin-androidx-compose", version.ref = "koinAndroidCompose" }
+koin-androidx-compose = { group = "io.insert-koin", name = "koin-androidx-compose", version.ref = "koinAndroidCompose" }
 koin-compose = { group = "io.insert-koin", name = "koin-compose", version.ref = "koinCompose" }
 
 # Dependencies of the included build-logic

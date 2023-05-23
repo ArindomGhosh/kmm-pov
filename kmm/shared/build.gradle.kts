@@ -25,6 +25,8 @@ kotlin {
                 implementation(compose.foundation)
                 implementation(compose.ui)
                 implementation(compose.material)
+                implementation(libs.koin.core)
+                implementation(libs.kotlinx.coroutines.core)
                 api(project(":kmm:feature:news"))
             }
         }

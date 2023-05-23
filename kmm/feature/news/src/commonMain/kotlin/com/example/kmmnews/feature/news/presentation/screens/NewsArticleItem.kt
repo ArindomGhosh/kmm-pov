@@ -12,12 +12,13 @@ import androidx.compose.ui.Modifier
 import androidx.compose.ui.unit.dp
 import com.example.kmmnews.feature.news.models.NewsArticle
 
+//todo: refactor to use Entity Article from Domain Layer
 @Composable
 fun NewsArticleList(articles: List<NewsArticle>) {
     LazyColumn {
         items(articles.size) { index ->
 
-            NewsArticleItem(article = articles.get(index)) { _, _ ->
+            NewsArticleItem(article = articles[index]) { _, _ ->
                 // Show the modal dialog
             }
         }
