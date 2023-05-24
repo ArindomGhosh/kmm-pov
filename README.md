@@ -36,7 +36,8 @@ The goal of the project is to explore [KMM](https://kotlinlang.org/docs/multipla
 
 ### KMM News architecture
 
-<img width="1126" alt="Screenshot 2023-05-22 at 12 03 55 PM" src="https://github.com/Deloitte/dd-poc-kmm/assets/70739057/cb3010e9-af50-4112-9ed9-c06fba94fbf1">
+<img width="1383" alt="Screenshot 2023-05-24 at 5 00 47 PM" src="https://github.com/Deloitte/dd-poc-kmm/assets/70739057/30bd47a4-3082-4f73-8870-ecdac1c589d3">
+
 
 
 
