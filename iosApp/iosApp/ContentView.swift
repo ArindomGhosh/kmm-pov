@@ -2,8 +2,7 @@ import SwiftUI
 import shared
 
 struct ComposeView: UIViewControllerRepresentable {
-    var newsLisViewModel:NewsScreenViewModel
-    
+    let newsLisViewModel:NewsScreenViewModel
     
     func makeUIViewController(context: Context) -> UIViewController {
         Newslistsceen_iosKt.NewListScreeController(newsScreenViewModel:newsLisViewModel)
@@ -14,35 +13,21 @@ struct ComposeView: UIViewControllerRepresentable {
 
 
 struct ContentView: View {
-    
-    @ObservedObject private(set) var contentViewModel:ContenViewModel
 
+    let newsLisViewModel:NewsScreenViewModel
     
 	var body: some View {
-        ComposeView(newsLisViewModel: contentViewModel.newsScreenViewModel)
+        ComposeView(newsLisViewModel: newsLisViewModel)
             .ignoresSafeArea(.keyboard)
             .onDisappear {
-                contentViewModel.destroy()
+                newsLisViewModel.clear()
             }
         
 	}
 }
 
-@MainActor
-extension ContentView{
-    class ContenViewModel:ObservableObject{
-        @LazyKoin
-        var newsScreenViewModel:NewsScreenViewModel
-
-        func destroy(){
-            newsScreenViewModel.clear()
-        }
-    }
-}
-
-
 struct ContentView_Previews: PreviewProvider {
 	static var previews: some View {
-		ContentView(contentViewModel: ContentView.ContenViewModel())
+        ContentView(newsLisViewModel: KoinApplication.inject())
 	}
 }
