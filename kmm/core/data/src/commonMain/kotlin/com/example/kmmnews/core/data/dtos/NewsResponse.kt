@@ -1,24 +1,43 @@
 package com.example.kmmnews.core.data.dtos
 
+import kotlinx.serialization.SerialName
+import kotlinx.serialization.Serializable
+
+@Serializable
 data class NewsResponse(
-    val status:String,
-    val topResults:Int,
-    val articles:List<NewsArticle>
+    @SerialName("status")
+    val status: String,
+    @SerialName("totalResults")
+    val topResults: Int,
+    @SerialName("articles")
+    val articles: List<NewsArticle>,
 )
 
+@Serializable
 data class NewsArticle(
+    @SerialName("source")
     val source: Source,
-    val author:String,
-    val title:String,
-    val description:String,
-    val urlToImage:String,
-    val publishedAt:String, // ISO8061
-    val content:String,
+    @SerialName("author")
+    val author: String,
+    @SerialName("title")
+    val title: String,
+    @SerialName("description")
+    val description: String,
+    @SerialName("url")
+    val url: String,
+    @SerialName("urlToImage")
+    val urlToImage: String,
+    @SerialName("publishedAt")
+    val publishedAt: String, // ISO8061
+    @SerialName("content")
+    val content: String,
 
-){
+) {
+    @Serializable
     data class Source(
-        val id:String?=null,
-        val name:String
+        @SerialName("id")
+        val id: String? = null,
+        @SerialName("name")
+        val name: String,
     )
 }
-

@@ -12,7 +12,6 @@ import kotlinx.coroutines.flow.catch
 import kotlinx.coroutines.flow.collect
 import kotlinx.coroutines.flow.onEach
 import kotlinx.coroutines.flow.onStart
-import kotlinx.coroutines.flow.update
 import kotlinx.coroutines.launch
 
 sealed interface NewsUiState {
@@ -22,7 +21,7 @@ sealed interface NewsUiState {
 }
 
 class NewsScreenViewModel(
-    private val getNationalNews: GetNationalNews
+    private val getNationalNews: GetNationalNews,
 ) : ViewModel() {
 
     private val _uiState = MutableStateFlow<NewsUiState>(NewsUiState.Loading)
@@ -30,30 +29,60 @@ class NewsScreenViewModel(
     val currentUiState = _uiState.value
 
     val uiState: StateFlow<NewsUiState> = _uiState.asStateFlow()
+
     init {
         viewModelScope.launch {
-            getNewsForCountry("Some counrty")
+//            getNewsForCountry("Some counrty")
+            getNews()
         }
     }
+
     fun getNewsForCountry(countryName: String) {
         viewModelScope.launch {
             getNationalNews.invoke(countryName)
                 .onStart {
-                    _uiState.value= NewsUiState.Loading
+                    _uiState.value = NewsUiState.Loading
                 }
-                .onEach { entity->
-                    when (entity){
-                        is Entity.Fail -> _uiState.value= NewsUiState.Error(
-                            entity.err
+                .onEach { entity ->
+                    when (entity) {
+                        is Entity.Fail -> _uiState.value = NewsUiState.Error(
+                            entity.err,
                         )
-                        is Entity.Success ->  _uiState.value=  NewsUiState.Loaded(
-                            entity.data
+
+                        is Entity.Success -> _uiState.value = NewsUiState.Loaded(
+                            entity.data,
                         )
                     }
                 }
                 .catch {
-                    _uiState.value= NewsUiState.Error(
-                        ErrorEntity()
+                    _uiState.value = NewsUiState.Error(
+                        ErrorEntity(),
+                    )
+                }
+                .collect()
+        }
+    }
+
+    fun getNews() {
+        viewModelScope.launch {
+            getNationalNews.loadNationalNews("us")
+                .onStart {
+                    _uiState.value = NewsUiState.Loading
+                }
+                .onEach { entity ->
+                    when (entity) {
+                        is Entity.Fail -> _uiState.value = NewsUiState.Error(
+                            entity.err,
+                        )
+
+                        is Entity.Success -> _uiState.value = NewsUiState.Loaded(
+                            entity.data,
+                        )
+                    }
+                }
+                .catch {
+                    _uiState.value = NewsUiState.Error(
+                        ErrorEntity(),
                     )
                 }
                 .collect()

@@ -9,6 +9,7 @@ kotlin {
                 implementation(libs.koin.core)
                 implementation(libs.kotlinx.coroutines.core)
                 implementation(project(":kmm:core:data"))
+                implementation(project(":kmm:core:network"))
             }
         }
         val commonTest by getting {

@@ -18,6 +18,7 @@ kotlin {
                 implementation(project(":kmm:core:ui"))
                 implementation(project(":kmm:core:common"))
                 implementation(project(":kmm:domain:news"))
+                implementation(project(":kmm:core:data"))
             }
         }
         val commonTest by getting {
