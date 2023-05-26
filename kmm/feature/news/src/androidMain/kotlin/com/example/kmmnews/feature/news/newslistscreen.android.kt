@@ -8,6 +8,6 @@ import org.koin.core.context.GlobalContext.get
 @Composable
 fun NewsListScreen(){
     CommonNewsScreen(
-        newsScreenViewModel = get().get()
+        newsScreenViewModel = koinInject()
     )
 }

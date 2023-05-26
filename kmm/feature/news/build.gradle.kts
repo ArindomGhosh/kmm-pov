@@ -14,7 +14,6 @@ kotlin {
                 implementation(libs.koin.core)
 //                implementation(libs.koin.compose)
                 implementation(libs.kotlinx.coroutines.core)
-//                implementation("io.insert-koin:koin-compose:1.0.2")
                 implementation(project(":kmm:core:ui"))
                 implementation(project(":kmm:core:common"))
                 implementation(project(":kmm:domain:news"))

@@ -1,8 +1,8 @@
-package com.example.kmmnews.domain.news.entities
+package com.example.kmmnews.domain.common.entities
 
 sealed interface Entity <out T:Any>{
-    data class Success<out T:Any>(val data:T):Entity<T>
-    data class Fail(val err: ErrorEntity):Entity<Nothing>
+    data class Success<out T:Any>(val data:T): Entity<T>
+    data class Fail(val err: ErrorEntity): Entity<Nothing>
 }
 
 enum class ErrorType{

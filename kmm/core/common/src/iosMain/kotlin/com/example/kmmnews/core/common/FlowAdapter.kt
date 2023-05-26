@@ -1,4 +1,4 @@
-package com.example.kmmnews.shared
+package com.example.kmmnews.core.common
 
 import kotlinx.coroutines.CoroutineScope
 import kotlinx.coroutines.Job

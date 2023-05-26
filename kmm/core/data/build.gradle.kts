@@ -1,14 +1,17 @@
 plugins {
     id("com.kmmnews.kotlin.multiplatform.library")
+    alias(libs.plugins.kotlin.serialization)
 }
 
 kotlin {
 
     sourceSets {
         val commonMain by getting {
-            dependencies{
+            dependencies {
                 implementation(libs.koin.core)
                 implementation(libs.kotlinx.coroutines.core)
+                implementation(libs.ktor.serialization.kotlinx.json)
+                implementation(project(":kmm:core:network"))
             }
         }
         val commonTest by getting {

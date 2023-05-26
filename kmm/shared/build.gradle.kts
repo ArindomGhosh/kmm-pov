@@ -15,6 +15,7 @@ kotlin {
             baseName = "shared"
             isStatic = true
             export(project(":kmm:feature:news"))
+            export(project(":kmm:core:common"))
         }
     }
 
