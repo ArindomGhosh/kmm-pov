@@ -24,13 +24,9 @@ fun CommonNewsScreen(
         is NewsUiState.Loaded -> {
             KmmNewsTheme {
                 Surface(color = MaterialTheme.colors.background) {
-//                    Text(
-//                        (newsUiState as NewsUiState.Loaded).newsList.joinToString("")
-//                    )
                     NewsArticleList(articles = (newsUiState as NewsUiState.Loaded).newsList)
                 }
             }
-
         }
 
         NewsUiState.Loading -> {
