@@ -32,40 +32,13 @@ class NewsScreenViewModel(
 
     init {
         viewModelScope.launch {
-//            getNewsForCountry("Some counrty")
-            getNews()
+            getNewsForCountry("us")
         }
     }
 
     fun getNewsForCountry(countryName: String) {
         viewModelScope.launch {
             getNationalNews.invoke(countryName)
-                .onStart {
-                    _uiState.value = NewsUiState.Loading
-                }
-                .onEach { entity ->
-                    when (entity) {
-                        is Entity.Fail -> _uiState.value = NewsUiState.Error(
-                            entity.err,
-                        )
-
-                        is Entity.Success -> _uiState.value = NewsUiState.Loaded(
-                            entity.data,
-                        )
-                    }
-                }
-                .catch {
-                    _uiState.value = NewsUiState.Error(
-                        ErrorEntity(),
-                    )
-                }
-                .collect()
-        }
-    }
-
-    fun getNews() {
-        viewModelScope.launch {
-            getNationalNews.loadNationalNews("us")
                 .onStart {
                     _uiState.value = NewsUiState.Loading
                 }

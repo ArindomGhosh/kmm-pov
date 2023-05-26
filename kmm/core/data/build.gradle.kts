@@ -1,17 +1,17 @@
 plugins {
     id("com.kmmnews.kotlin.multiplatform.library")
-    kotlin("plugin.serialization") version "1.8.21"
+    alias(libs.plugins.kotlin.serialization)
 }
 
 kotlin {
 
     sourceSets {
         val commonMain by getting {
-            val serializationVersion = "1.5.0"
             dependencies {
                 implementation(libs.koin.core)
                 implementation(libs.kotlinx.coroutines.core)
-                implementation("org.jetbrains.kotlinx:kotlinx-serialization-json:$serializationVersion")
+                implementation(libs.ktor.serialization.kotlinx.json)
+                implementation(project(":kmm:core:network"))
             }
         }
         val commonTest by getting {

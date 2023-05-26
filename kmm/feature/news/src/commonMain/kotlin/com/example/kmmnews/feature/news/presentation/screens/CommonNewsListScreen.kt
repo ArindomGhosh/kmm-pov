@@ -8,7 +8,6 @@ import androidx.compose.material.Text
 import androidx.compose.runtime.collectAsState
 import androidx.compose.runtime.getValue
 import com.example.kmmnews.core.ui.KmmNewsTheme
-import com.example.kmmnews.feature.news.models.NewsArticle
 
 @Composable
 fun CommonNewsScreen(
@@ -25,10 +24,10 @@ fun CommonNewsScreen(
         is NewsUiState.Loaded -> {
             KmmNewsTheme {
                 Surface(color = MaterialTheme.colors.background) {
-                    Text(
-                        (newsUiState as NewsUiState.Loaded).newsList.joinToString("")
-                    )
-//                    NewsArticleList(articles = articles)
+//                    Text(
+//                        (newsUiState as NewsUiState.Loaded).newsList.joinToString("")
+//                    )
+                    NewsArticleList(articles = (newsUiState as NewsUiState.Loaded).newsList)
                 }
             }
 

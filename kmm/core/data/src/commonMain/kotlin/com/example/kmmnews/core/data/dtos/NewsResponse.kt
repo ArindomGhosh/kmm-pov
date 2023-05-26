@@ -16,28 +16,28 @@ data class NewsResponse(
 @Serializable
 data class NewsArticle(
     @SerialName("source")
-    val source: Source,
+    val source: Source = Source(),
     @SerialName("author")
-    val author: String,
+    val author: String = "",
     @SerialName("title")
-    val title: String,
+    val title: String = "",
     @SerialName("description")
-    val description: String,
+    val description: String = "",
     @SerialName("url")
-    val url: String,
+    val url: String = "",
     @SerialName("urlToImage")
-    val urlToImage: String,
+    val urlToImage: String = "",
     @SerialName("publishedAt")
-    val publishedAt: String, // ISO8061
+    val publishedAt: String = "", // ISO8061
     @SerialName("content")
-    val content: String,
+    val content: String = "",
 
-) {
+    ) {
     @Serializable
     data class Source(
         @SerialName("id")
-        val id: String? = null,
+        val id: String = "",
         @SerialName("name")
-        val name: String,
+        val name: String = "",
     )
 }

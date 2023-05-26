@@ -10,11 +10,11 @@ import androidx.compose.material.Text
 import androidx.compose.runtime.Composable
 import androidx.compose.ui.Modifier
 import androidx.compose.ui.unit.dp
-import com.example.kmmnews.feature.news.models.NewsArticle
+import com.example.kmmnews.domain.news.entities.Article
 
 //todo: refactor to use Entity Article from Domain Layer
 @Composable
-fun NewsArticleList(articles: List<NewsArticle>) {
+fun NewsArticleList(articles: List<Article>) {
     LazyColumn {
         items(articles.size) { index ->
 
@@ -26,7 +26,7 @@ fun NewsArticleList(articles: List<NewsArticle>) {
 }
 
 @Composable
-fun NewsArticleItem(article: NewsArticle, onClick: (String, String)-> Unit) {
+fun NewsArticleItem(article: Article, onClick: (String, String)-> Unit) {
     Surface(
         modifier = Modifier
             .fillMaxWidth()

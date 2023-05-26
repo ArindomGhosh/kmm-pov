@@ -1,5 +1,6 @@
 plugins {
     id("com.kmmnews.kotlin.multiplatform.library")
+    alias(libs.plugins.jetbrains.compose)
 }
 
 kotlin {
@@ -7,6 +8,7 @@ kotlin {
     sourceSets {
         val commonMain by getting {
             dependencies {
+                implementation(compose.runtime)
                 implementation(libs.kotlinx.coroutines.core)
             }
 
@@ -19,6 +21,7 @@ kotlin {
         val androidMain by getting{
             dependencies{
                 implementation(libs.androidx.lifecycle.viewmodel)
+                implementation(libs.androidx.lifecycle.runtime.compose)
             }
         }
         val androidUnitTest by getting
