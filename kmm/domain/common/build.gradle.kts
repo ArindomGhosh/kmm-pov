@@ -6,10 +6,8 @@ kotlin {
     sourceSets {
         val commonMain by getting {
             dependencies {
-                implementation(libs.koin.core)
                 implementation(libs.kotlinx.coroutines.core)
                 implementation(project(":kmm:core:data"))
-                api(project(":kmm:domain:common"))
             }
         }
         val commonTest by getting {
@@ -41,5 +39,5 @@ kotlin {
 }
 
 android {
-    namespace = "com.example.kmmnews.domain.news"
+    namespace = "com.example.kmmnews.domain.common"
 }
