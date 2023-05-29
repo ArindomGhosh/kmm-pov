@@ -17,7 +17,6 @@ import com.example.kmmnews.domain.news.entities.Article
 fun NewsArticleList(articles: List<Article>) {
     LazyColumn {
         items(articles.size) { index ->
-
             NewsArticleItem(article = articles[index]) { _, _ ->
                 // Show the modal dialog
             }
