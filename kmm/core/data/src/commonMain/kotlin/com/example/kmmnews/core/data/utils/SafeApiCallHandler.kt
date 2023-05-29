@@ -10,6 +10,7 @@ suspend fun <T : Any> safeApiCall(apiCall: suspend () -> T): Flow<ApiResponse<T>
     return flow {
         try {
             emit(ApiResponse.Success(apiCall()))
+//            emit(ApiResponse.Fail(ApiException.DefaultException))
         } catch (exception: Exception) {
             emit(ApiResponse.Fail(ApiException.DefaultException))
         }
