@@ -8,7 +8,7 @@ struct NewsListViewController: UIViewControllerRepresentable {
 
     // MRAK: Protocol Methods -
     func makeUIViewController(context: Context) -> UIViewController {
-        Newslistsceen_iosKt.NewListScreeController(newsScreenViewModel: newsLisViewModel)
+        Newslistsceen_iosKt.NewsListScreeController(newsScreenViewModel: newsLisViewModel)
     }
 
     func updateUIViewController(_ uiViewController: UIViewController, context: Context) {}
