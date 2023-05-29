@@ -39,6 +39,7 @@ fun NewsArticleItem(article: Article, onClick: (String, String)-> Unit) {
                 style = MaterialTheme.typography.h5,
                 modifier = Modifier.padding(bottom = 8.dp)
             )
+
             Text(
                 text = article.description,
                 style = MaterialTheme.typography.body1,

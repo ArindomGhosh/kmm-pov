@@ -8,8 +8,8 @@
 
 import shared
 
-class FlowCollector<T>:Kotlinx_coroutines_coreFlowCollector{
-    let callback:(T) -> Void
+class FlowCollector<T>: Kotlinx_coroutines_coreFlowCollector {
+    let callback: (T) -> Void
 
     init(callback: @escaping (T) -> Void) {
         self.callback = callback
@@ -27,5 +27,4 @@ class FlowCollector<T>:Kotlinx_coroutines_coreFlowCollector{
         // passing an error object will throw a NSGenericException in kotlin code, which can be handled or your app will crash
         completionHandler(nil)
     }
-
 }
