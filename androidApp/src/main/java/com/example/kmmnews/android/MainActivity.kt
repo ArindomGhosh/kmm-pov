@@ -4,8 +4,7 @@ import android.os.Bundle
 import androidx.activity.ComponentActivity
 import androidx.activity.compose.setContent
 import androidx.compose.material.MaterialTheme
-import androidx.compose.ui.platform.LocalContext
-import com.example.kmmnews.feature.news.NewsListScreen
+import com.example.kmmnews.feature.news.NewsDetailScreen
 
 
 class MainActivity : ComponentActivity() {
@@ -13,9 +12,10 @@ class MainActivity : ComponentActivity() {
         super.onCreate(savedInstanceState)
         setContent {
             MaterialTheme() {
-                
+
             }
-            NewsListScreen()
+//            NewsListScreen()
+            NewsDetailScreen()
         }
     }
 }
