@@ -23,10 +23,10 @@ import androidx.compose.ui.Modifier
 import androidx.compose.ui.draw.clip
 import androidx.compose.ui.graphics.Color
 import androidx.compose.ui.unit.dp
+import androidx.compose.ui.unit.sp
 import com.example.kmmnews.domain.news.entities.Article
 import com.seiko.imageloader.LocalImageLoader
 import com.seiko.imageloader.rememberAsyncImagePainter
-import kotlinx.datetime.Clock
 import kotlinx.datetime.Instant
 import kotlinx.datetime.TimeZone
 import kotlinx.datetime.toLocalDateTime
@@ -34,12 +34,16 @@ import kotlinx.datetime.toLocalDateTime
 @Composable
 fun CommonNewsDetailScreen(article: Article?) {
     if (article == null) return
-    val instantNow = Clock.System.now()
-    instantNow.toString()  // returns something like 2015-12-31T12:30:00Z
-    val instantBefore = Instant.parse(article.publishedAt)
-    val d = instantBefore.toLocalDateTime(TimeZone.currentSystemDefault())
-    val topBottomPadding = Modifier.padding(top = 8.dp, bottom = 8.dp)
 
+    val formattedDateTime = try {
+        val instantBefore = Instant.parse(article.publishedAt)
+        val d = instantBefore.toLocalDateTime(TimeZone.currentSystemDefault())
+        "${d.dayOfMonth}.${d.monthNumber}.${d.year} ${d.time}"
+    } catch (e: Exception) {
+        article.publishedAt
+    }
+
+    val topBottomPadding = Modifier.padding(top = 8.dp, bottom = 8.dp)
 
     MaterialTheme {
         val scaffoldState = rememberScaffoldState()
@@ -48,11 +52,14 @@ fun CommonNewsDetailScreen(article: Article?) {
             topBar = {
                 TopAppBar(
                     title = {
-                        Text(text = "Top news")
+                        Text(
+                            text = "Published by ${article.source}",
+                            style = MaterialTheme.typography.body1
+                        )
                     },
                     navigationIcon = {
                         IconButton(onClick = {
-                            //TODO : Future state - TO be updated when drawer is integrated
+                            //TODO : Implement back navigation
                         }) {
                             Icon(Icons.Filled.ArrowBack, "")
                         }
@@ -87,18 +94,31 @@ fun CommonNewsDetailScreen(article: Article?) {
                         )
 
                         Text(
-                            modifier = topBottomPadding,
-                            text = "${article.source} | ${d.dayOfMonth}.${d.monthNumber}.${d.year} ${d.time}",
-                            style = MaterialTheme.typography.body1,
+                            modifier = Modifier.padding(top = 8.dp, bottom = 1.dp),
+                            text = "Published by ${article.source}",
+                            style = MaterialTheme.typography.overline,
+                            color = Color.Gray
+                        )
+
+                        Text(
+                            modifier = Modifier.padding(top = 1.dp, bottom = 8.dp),
+                            text = formattedDateTime,
+                            style = MaterialTheme.typography.overline,
                             color = Color.Gray
                         )
 
                         Text(
                             modifier = topBottomPadding,
-                            text = article.description
+                            text = article.description,
+                            lineHeight = 22.sp,
+                            letterSpacing = 0.5.sp
                         )
 
-                        Text(article.content)
+                        Text(
+                            article.content,
+                            lineHeight = 22.sp,
+                            letterSpacing = 0.5.sp
+                        )
                     }
                 }
             }
