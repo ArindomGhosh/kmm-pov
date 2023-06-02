@@ -32,7 +32,7 @@ import kotlinx.datetime.TimeZone
 import kotlinx.datetime.toLocalDateTime
 
 @Composable
-fun CommonNewsDetailScreen(article: Article?) {
+fun CommonNewsDetailScreen(article: Article? , onBackButtonClick: () -> Unit) {
     if (article == null) return
 
     val formattedDateTime = try {
@@ -58,9 +58,7 @@ fun CommonNewsDetailScreen(article: Article?) {
                         )
                     },
                     navigationIcon = {
-                        IconButton(onClick = {
-                            //TODO : Implement back navigation
-                        }) {
+                        IconButton(onClick = onBackButtonClick) {
                             Icon(Icons.Filled.ArrowBack, "")
                         }
                     }

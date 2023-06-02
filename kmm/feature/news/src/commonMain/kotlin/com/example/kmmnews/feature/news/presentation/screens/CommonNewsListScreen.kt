@@ -6,13 +6,11 @@ import androidx.compose.foundation.layout.Column
 import androidx.compose.foundation.layout.fillMaxSize
 import androidx.compose.foundation.layout.fillMaxWidth
 import androidx.compose.foundation.layout.height
-import androidx.compose.foundation.layout.padding
 import androidx.compose.material.Icon
 import androidx.compose.material.IconButton
 import androidx.compose.material.LinearProgressIndicator
 import androidx.compose.material.MaterialTheme
 import androidx.compose.material.Scaffold
-import androidx.compose.material.Snackbar
 import androidx.compose.material.SnackbarResult
 import androidx.compose.material.Surface
 import androidx.compose.material.Text
@@ -33,7 +31,8 @@ import kotlinx.coroutines.launch
 
 @Composable
 fun CommonNewsScreen(
-    newsScreenViewModel: NewsScreenViewModel
+    newsScreenViewModel: NewsScreenViewModel,
+    onArticleSelected: (Article) -> Unit
 ) {
     // Todo implement collectAsStateWithLifecycle
     // check: https://developer.android.com/reference/kotlin/androidx/lifecycle/compose/package-summary#(kotlinx.coroutines.flow.Flow).collectAsStateWithLifecycle(kotlin.Any,androidx.lifecycle.Lifecycle,androidx.lifecycle.Lifecycle.State,kotlin.coroutines.CoroutineContext)
@@ -73,7 +72,7 @@ fun CommonNewsScreen(
                     }
                 }
 
-                is NewsUiState.Loaded -> NewsScreen((newsUiState as NewsUiState.Loaded).newsList)
+                is NewsUiState.Loaded -> NewsScreen((newsUiState as NewsUiState.Loaded).newsList, onArticleSelected = onArticleSelected)
                 is NewsUiState.Loading -> LoadingScreen()
             }
         }
@@ -81,9 +80,9 @@ fun CommonNewsScreen(
 }
 
 @Composable
-fun NewsScreen(newsList: List<Article>) {
+fun NewsScreen(newsList: List<Article>, onArticleSelected: (Article) -> Unit) {
     Surface(color = MaterialTheme.colors.background) {
-        NewsArticleList(articles = newsList)
+        NewsArticleList(articles = newsList, onArticleSelected = onArticleSelected)
     }
 
 }

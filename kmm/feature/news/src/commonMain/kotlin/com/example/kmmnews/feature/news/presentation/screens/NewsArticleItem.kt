@@ -12,20 +12,19 @@ import androidx.compose.ui.Modifier
 import androidx.compose.ui.unit.dp
 import com.example.kmmnews.domain.news.entities.Article
 
-//todo: refactor to use Entity Article from Domain Layer
+// todo: refactor to use Entity Article from Domain Layer
 @Composable
-fun NewsArticleList(articles: List<Article>) {
+fun NewsArticleList(articles: List<Article>, onArticleSelected: (Article) -> Unit) {
     LazyColumn {
         items(articles.size) { index ->
-            NewsArticleItem(article = articles[index]) { _, _ ->
-                // Show the modal dialog
-            }
+//            NewsArticleItem(article = articles[index], onClick = onArticleSelected)
+            NewsArticleItem(article = articles[index], onClick = onArticleSelected)
         }
     }
 }
 
 @Composable
-fun NewsArticleItem(article: Article, onClick: (String, String)-> Unit) {
+fun NewsArticleItem(article: Article, onClick: (Article) -> Unit) {
     Surface(
         modifier = Modifier
             .fillMaxWidth()
@@ -46,7 +45,7 @@ fun NewsArticleItem(article: Article, onClick: (String, String)-> Unit) {
                 modifier = Modifier.padding(top = 8.dp)
             )
             Button(onClick = {
-                onClick(article.title, article.description)
+                onClick(article)
             }) {
                 Text("Read more")
             }

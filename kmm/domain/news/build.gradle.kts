@@ -1,5 +1,6 @@
 plugins {
     id("com.kmmnews.kotlin.multiplatform.library")
+    id("kotlinx-serialization")
 }
 
 kotlin {
@@ -8,6 +9,7 @@ kotlin {
             dependencies {
                 implementation(libs.koin.core)
                 implementation(libs.kotlinx.coroutines.core)
+                implementation("org.jetbrains.kotlinx:kotlinx-serialization-json:1.5.1")
                 implementation(project(":kmm:core:data"))
                 api(project(":kmm:domain:common"))
             }

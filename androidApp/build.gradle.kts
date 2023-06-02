@@ -24,5 +24,6 @@ dependencies {
     implementation(compose.material)
     implementation(libs.koin.android)
     implementation(libs.koin.androidx.compose)
+    implementation("androidx.navigation:navigation-compose:2.5.3")
     implementation("org.jetbrains.kotlinx:kotlinx-coroutines-android:1.7.1")
 }

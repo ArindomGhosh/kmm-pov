@@ -1,7 +1,9 @@
 package com.example.kmmnews.domain.news.entities
 
 import com.example.kmmnews.core.data.dtos.NewsArticle
+import kotlinx.serialization.Serializable
 
+@Serializable
 data class Article(
     val title: String,
     val description: String,

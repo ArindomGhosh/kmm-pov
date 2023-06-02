@@ -3,11 +3,11 @@ package com.example.kmmnews.feature.news
 import androidx.compose.runtime.Composable
 import com.example.kmmnews.domain.news.entities.Article
 import com.example.kmmnews.feature.news.presentation.screens.CommonNewsDetailScreen
+import kotlinx.serialization.json.Json
 
 @Composable
-fun NewsDetailScreen(){
-
-    val article = Article(
+fun NewsDetailScreen(article: String, onBackButtonClick: () -> Unit) {
+    val tempArticle = Article(
         source = "Gizmodo.com",
                 title = "Bitcoin Pyramid Scheme Fraudster Ordered to Pay \$3.4 Billion",
                 description =
@@ -18,5 +18,9 @@ fun NewsDetailScreen(){
                 content =
         "The Commodities Futures Trading Commission patted itself on the back for winning one of the largest civil cases against a crypto crook, even if mostor anyof those affected will see any of their money… [+3594 chars]"
     )
-    CommonNewsDetailScreen(article)
+    CommonNewsDetailScreen(
+//        article = Json.decodeFromString<Article>(article),
+        article = tempArticle,
+        onBackButtonClick = onBackButtonClick,
+    )
 }
