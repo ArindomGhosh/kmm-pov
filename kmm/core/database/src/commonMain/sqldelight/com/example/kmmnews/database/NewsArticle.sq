@@ -1,0 +1,33 @@
+import kotlin.collections.Map;
+import kotlin.String;
+
+CREATE TABLE newsArticle(
+       _id INTEGER NOT NULL PRIMARY KEY AUTOINCREMENT,
+       sources TEXT AS Map<String, String > NOT NULL,
+       author TEXT NOT NULL,
+       title TEXT NOT NULL,
+       description TEXT NOT NULL,
+       url TEXT NOT NULL,
+       urlToImage TEXT NOT NULL,
+       publishedAt TEXT NOT NULL,
+       content TEXT NOT NULL
+);
+
+insertarticles:
+INSERT OR REPLACE
+INTO newsArticle (sources,author,title,description,url,urlToImage,publishedAt,content)
+VALUES (?,?,?,?,?,?,?,?);
+
+insertFullArticle:
+INSERT OR REPLACE
+INTO newsArticle (sources,author,title,description,url,urlToImage,publishedAt,content)
+VALUES ?;
+
+getAllArticles:
+SELECT * FROM newsArticle;
+
+getArticlesForId:
+SELECT * FROM newsArticle WHERE _id=?;
+
+deleteAllArticles:
+DELETE FROM newsArticle;

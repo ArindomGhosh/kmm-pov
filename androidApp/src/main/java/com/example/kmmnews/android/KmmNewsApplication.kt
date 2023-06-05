@@ -17,4 +17,5 @@ class KmmNewsApplication : Application() {
             // Load modules
         }
     }
+
 }
