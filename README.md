@@ -38,6 +38,44 @@ The goal of the project is to explore [KMM](https://kotlinlang.org/docs/multipla
 
 <img width="1383" alt="Screenshot 2023-05-24 at 5 00 47 PM" src="https://github.com/Deloitte/dd-poc-kmm/assets/70739057/30bd47a4-3082-4f73-8870-ecdac1c589d3">
 
+## When to choose KMM ?
+
+KMM is a new approach towards cross platform application development where it brings best of hybrid application's one code base, write once run anywhere principle
+and also native application performance. As already mentioned above, most prominent usp of KMM is sharing common code across various platforms, which reduces duplicity and promotes building reusable components.
+KMM (Kotlin Multiplatform Mobile) is a technology that allows you to share code between different platforms, such as Android and iOS, in mobile app development. Here are some situations where choosing KMM for mobile app development might be beneficial:
+
+- Cross-platform app development: If you need to develop an app for both Android and iOS platforms, KMM can be a good choice. It allows you to write shared business logic and data access code in Kotlin, which can be used by both platforms, reducing code duplication and development efforts.
+
+- Code sharing: If you have complex business logic or data manipulation requirements that need to be consistent across platforms, KMM can help you share the codebase. By writing the code once in Kotlin and sharing it between platforms, you can ensure consistency and reduce the chances of bugs introduced due to platform-specific implementation differences.
+
+- Rapid development: KMM can speed up the development process by enabling code reuse. Instead of building separate codebases for Android and iOS, you can write common code in Kotlin, reducing the time and effort required for development, testing, and maintenance.
+
+- Team efficiency: If you have a team of developers with expertise in <ins>Kotlin</ins>, adopting KMM can be advantageous. The team can leverage their existing Kotlin knowledge and skills to build mobile apps for both platforms, rather than learning and working with different programming languages.
+
+- Performance optimization: KMM allows you to optimize performance-critical parts of your app by writing platform-specific code in Swift for iOS and Kotlin for Android. This way, you can achieve platform-specific optimizations while still sharing the majority of the code.
+
+- Code maintenance: With KMM, code maintenance becomes easier as you have a single codebase to manage. Bug fixes, feature additions, and updates can be applied once, reducing the risk of inconsistencies between platforms and improving the overall maintainability of the codebase.
+
+<i>However, it's important to note that KMM might not be suitable for every app project. Consider the complexity of your app, platform-specific requirements, and the availability of third-party libraries and frameworks when deciding whether to choose KMM for mobile app development. Additionally, keep in mind that KMM is a relatively new technology, so it's essential to consider the maturity of the ecosystem and community support for your specific use case.</i>
+
+
+## Comparison and trade-offs with other prominent cross platform solutions
+
+When comparing KMM (Kotlin Multiplatform Mobile), React Native, Flutter, and Ionic, here's an overview of their key characteristics in the below table :
+
+
+| Characteristics                           | KMM                                                                                                                                               | React Native                                                                                                                                                             | Flutter                                                                                                                           | ionic                                                                                                                         |
+|-------------------------------------|---------------------------------------------------------------------------------------------------------------------------------------------------|--------------------------------------------------------------------------------------------------------------------------------------------------------------------------|-----------------------------------------------------------------------------------------------------------------------------------|-------------------------------------------------------------------------------------------------------------------------------|
+| Language and Development Experience | Uses Kotlin as the primary language, providing a modern and expressive  development experience for Android developers.                            | Uses JavaScript and the React framework, which has a  large community and extensive resources.                                                                           | Uses Dart and offers a reactive framework with a rich set of  pre-built UI components.                                            | Uses web technologies such as HTML, CSS, and JavaScript/TypeScript,  making it familiar for web developers.                   |
+| Performance                         | By sharing code between platforms, KMM can improve performance and reduce code duplication.  Platform-specific optimizations can also be applied. | The bridge between JavaScript and native components can introduce some performance overhead,  and platform-specific code might be required for performance optimization. | Compiles to native code and offers a high-performance rendering engine,  resulting in fast and native-like performance.           | Renders using web views, which might not match the performance of fully native solutions.                                     |
+| Code Sharing                        | Allows sharing non-UI code, such as business logic and data access, between platforms.  UI components need to be implemented separately.          | Enables sharing code for UI components, business logic, and data access,  providing a wide range of pre-built UI components.                                             | Enables code sharing for UI components, business logic, and data access,  with a comprehensive set of customizable UI components. | Shares UI code across platforms using web technologies, offering a single codebase for multiple platforms.                    |
+| Ecosystem and Community Support     | Kotlin has a growing ecosystem and community support, but it is relatively newer  compared to other frameworks.                                   | Benefits from a mature ecosystem with extensive community support and a wide range  of third-party libraries and packages.                                               | Has a growing ecosystem and community support, providing pre-built packages and libraries for various functionalities.            | Relies on web technologies, benefitting from a vast web ecosystem, community support, and extensive libraries and frameworks. |
+| Platform support                    | Currently supports Android,iOS,Desktop and Web(beta), integrating well with Android Studio for Android development.                               | Supports Android, iOS, web, and desktop platforms through community-driven efforts                                                                                       | Supports Android, iOS, web, desktop (Windows, macOS, Linux), and embedded systems.                                                | Supports Android, iOS, web, and desktop platforms, utilizing web views for rendering.                                         |
+
+## Guidance 
+Choosing the right framework depends on specific project requirements, team expertise, performance needs, and ecosystem support. KMM is a good fit for Kotlin developers focusing on Android and iOS. React Native is ideal for JavaScript developers seeking extensive community support and code sharing for UI components. Flutter offers native-like performance and is suitable for multi-platform development. Ionic targets web and mobile platforms, 
+providing a single codebase with web technology expertise. Consider these factors when making a decision.
+
 
 
 
