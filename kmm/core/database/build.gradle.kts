@@ -1,28 +1,37 @@
 plugins {
     id("com.kmmnews.kotlin.multiplatform.library")
-    alias(libs.plugins.jetbrains.compose)
+    alias(libs.plugins.sqldelight)
 }
 
 kotlin {
-
+    //TODO: https://youtrack.jetbrains.com/issue/KT-41344/Kotlin-Native-several-examples-of-sqlite3-linking-problems
+    listOf(
+        iosX64(),
+        iosArm64(),
+        iosSimulatorArm64()
+    ).forEach {
+        it.binaries {
+            findTest(org.jetbrains.kotlin.gradle.plugin.mpp.NativeBuildType.DEBUG)?.linkerOpts("-lsqlite3")
+        }
+    }
     sourceSets {
         val commonMain by getting {
             dependencies {
-                implementation(compose.runtime)
-                implementation(libs.kotlinx.coroutines.core)
                 implementation(libs.koin.core)
+                implementation(libs.kotlinx.coroutines.core)
+                implementation(libs.sqldelight.primitive.adapters)
+                implementation(project(":kmm:core:common"))
             }
-
         }
         val commonTest by getting {
             dependencies {
                 implementation(kotlin("test"))
             }
         }
-        val androidMain by getting{
-            dependencies{
-                implementation(libs.androidx.lifecycle.viewmodel)
-                implementation(libs.androidx.lifecycle.runtime.compose)
+        val androidMain by getting {
+            dependencies {
+                implementation(libs.koin.android)
+                implementation(libs.sqldelight.android.driver)
             }
         }
         val androidUnitTest by getting
@@ -34,6 +43,9 @@ kotlin {
             iosX64Main.dependsOn(this)
             iosArm64Main.dependsOn(this)
             iosSimulatorArm64Main.dependsOn(this)
+            dependencies {
+                implementation(libs.sqldelight.native.driver)
+            }
         }
         val iosX64Test by getting
         val iosArm64Test by getting
@@ -47,6 +59,14 @@ kotlin {
     }
 }
 
+sqldelight {
+    databases {
+        create("KmmNewsDataBase") {
+            packageName.set("com.example.kmmnews.database")
+        }
+    }
+}
+
 android {
-    namespace = "com.example.kmmnews.core.common"
+    namespace = "com.example.kmmnews.database"
 }
