@@ -14,8 +14,11 @@ kotlin {
         it.binaries.framework {
             baseName = "shared"
             isStatic = true
+            linkerOpts.add("-lsqlite3")
             export(project(":kmm:feature:news"))
             export(project(":kmm:core:common"))
+//            export(project(":kmm:core:database"))
+//            transitiveExport=true
         }
     }
 

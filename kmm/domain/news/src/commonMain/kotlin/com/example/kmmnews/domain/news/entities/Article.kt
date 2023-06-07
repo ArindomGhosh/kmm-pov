@@ -3,6 +3,7 @@ package com.example.kmmnews.domain.news.entities
 import com.example.kmmnews.core.data.dtos.NewsArticle
 
 data class Article(
+    val articleId:Long,
     val title: String,
     val description: String,
     val imageUrl: String,
@@ -13,6 +14,7 @@ data class Article(
 
 fun NewsArticle.toArticle() =
     Article(
+        articleId = this.id,
         title = this.title,
         description = this.description,
         imageUrl = this.urlToImage,

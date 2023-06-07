@@ -1,8 +1,7 @@
 package com.example.kmmnews.domain.news.usecases
 
-import com.example.kmmnews.core.data.dtos.ApiException
-import com.example.kmmnews.core.data.dtos.ApiResponse
 import com.example.kmmnews.core.data.dtos.NewsArticle
+import com.example.kmmnews.core.data.dtos.RemoteNewsArticle
 import com.example.kmmnews.core.data.repos.News
 import com.example.kmmnews.domain.common.entities.Entity
 import com.example.kmmnews.domain.common.utils.mapToEntity

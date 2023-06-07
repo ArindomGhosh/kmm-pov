@@ -4,16 +4,6 @@ plugins {
 }
 
 kotlin {
-    //TODO: https://youtrack.jetbrains.com/issue/KT-41344/Kotlin-Native-several-examples-of-sqlite3-linking-problems
-    listOf(
-        iosX64(),
-        iosArm64(),
-        iosSimulatorArm64()
-    ).forEach {
-        it.binaries {
-            findTest(org.jetbrains.kotlin.gradle.plugin.mpp.NativeBuildType.DEBUG)?.linkerOpts("-lsqlite3")
-        }
-    }
     sourceSets {
         val commonMain by getting {
             dependencies {
@@ -65,8 +55,9 @@ sqldelight {
             packageName.set("com.example.kmmnews.database")
         }
     }
+    linkSqlite.set(true)
 }
 
 android {
-    namespace = "com.example.kmmnews.database"
+    namespace = "com.example.kmmnews.core.database"
 }
