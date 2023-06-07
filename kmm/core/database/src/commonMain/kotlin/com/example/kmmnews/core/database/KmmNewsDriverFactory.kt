@@ -1,7 +1,10 @@
-package com.example.kmmnews.database
+package com.example.kmmnews.core.database
 
 import app.cash.sqldelight.ColumnAdapter
 import app.cash.sqldelight.db.SqlDriver
+import com.example.kmmnews.database.KmmNewsDataBase
+import com.example.kmmnews.core.database.NewsArticle
+import com.example.kmmnews.core.database.NewsArticleQueries
 import kotlinx.coroutines.CoroutineDispatcher
 
 expect class KmmNewsDriverFactory {

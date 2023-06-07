@@ -1,5 +1,7 @@
-package com.example.kmmnews.database
+package com.example.kmmnews.core.database
 
+import com.example.kmmnews.core.database.NewsArticle
+import com.example.kmmnews.core.database.NewsArticleQueries
 import io.github.aakira.napier.Napier
 import kotlinx.coroutines.CoroutineDispatcher
 import kotlinx.coroutines.flow.Flow

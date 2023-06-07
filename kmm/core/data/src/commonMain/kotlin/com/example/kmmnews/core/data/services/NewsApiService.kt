@@ -1,6 +1,5 @@
 package com.example.kmmnews.core.data.services
 
-import com.example.kmmnews.core.data.dtos.NewsArticle
 import com.example.kmmnews.core.data.dtos.NewsResponse
 import io.ktor.client.HttpClient
 import io.ktor.client.call.body
