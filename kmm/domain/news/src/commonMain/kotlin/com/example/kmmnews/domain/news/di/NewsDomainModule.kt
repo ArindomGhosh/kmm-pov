@@ -6,5 +6,5 @@ import org.koin.dsl.module
 
 val newsDomainModule = module {
     includes(repositoryModule)
-    single { GetNationalNews(news = get()) }
+    factory { GetNationalNews(news = get()) }
 }
