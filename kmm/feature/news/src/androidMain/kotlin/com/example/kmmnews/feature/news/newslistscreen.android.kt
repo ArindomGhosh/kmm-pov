@@ -7,11 +7,11 @@ import kotlinx.serialization.json.Json
 import org.koin.compose.koinInject
 
 @Composable
-fun NewsListScreen(selectedArticleAsJson: (String) -> Unit) {
+fun NewsListScreen(selectedArticleAsJson: (Long) -> Unit) {
     CommonNewsScreen(
         newsScreenViewModel = koinInject(),
         onArticleSelected = {
-            selectedArticleAsJson.invoke(Json.encodeToString(it))
+            selectedArticleAsJson.invoke(it.articleId)
         },
     )
 }

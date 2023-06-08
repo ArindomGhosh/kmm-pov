@@ -19,6 +19,8 @@ import androidx.compose.material.icons.Icons
 import androidx.compose.material.icons.filled.ArrowBack
 import androidx.compose.material.rememberScaffoldState
 import androidx.compose.runtime.Composable
+import androidx.compose.runtime.collectAsState
+import androidx.compose.runtime.getValue
 import androidx.compose.ui.Modifier
 import androidx.compose.ui.draw.clip
 import androidx.compose.ui.graphics.Color
@@ -32,9 +34,30 @@ import kotlinx.datetime.TimeZone
 import kotlinx.datetime.toLocalDateTime
 
 @Composable
-fun CommonNewsDetailScreen(article: Article? , onBackButtonClick: () -> Unit) {
-    if (article == null) return
+fun CommonNewsDetailScreen(
+    newsDetailScreenViewModel: NewsDetailsScreenViewModel,
+    articleId: Long,
+    onBackButtonClick: () -> Unit,
+) {
+    val newsDetailsUiState: NewsDetailsUiState by newsDetailScreenViewModel.uiState.collectAsState()
+    newsDetailScreenViewModel.getArticleFromId(articleId)
+    when (newsDetailsUiState) {
+        is NewsDetailsUiState.Loading ->
+            NewsDetailsLoading()
 
+        is NewsDetailsUiState.Loaded -> NewsDetailsLoaded(
+            (newsDetailsUiState as NewsDetailsUiState.Loaded).article,
+            onBackButtonClick = onBackButtonClick,
+        )
+    }
+}
+
+@Composable
+fun NewsDetailsLoading() {
+}
+
+@Composable
+fun NewsDetailsLoaded(article: Article, onBackButtonClick: () -> Unit) {
     val formattedDateTime = try {
         val instantBefore = Instant.parse(article.publishedAt)
         val d = instantBefore.toLocalDateTime(TimeZone.currentSystemDefault())
@@ -54,23 +77,22 @@ fun CommonNewsDetailScreen(article: Article? , onBackButtonClick: () -> Unit) {
                     title = {
                         Text(
                             text = "Published by ${article.source}",
-                            style = MaterialTheme.typography.body1
+                            style = MaterialTheme.typography.body1,
                         )
                     },
                     navigationIcon = {
                         IconButton(onClick = onBackButtonClick) {
                             Icon(Icons.Filled.ArrowBack, "")
                         }
-                    }
+                    },
                 )
-            }
+            },
         ) {
             Surface(color = MaterialTheme.colors.background) {
-
                 Column(modifier = Modifier.padding(8.dp).fillMaxSize()) {
                     Column(
                         modifier = Modifier.verticalScroll(rememberScrollState())
-                            .weight(1f)
+                            .weight(1f),
                     ) {
                         val resource = rememberAsyncImagePainter(
                             url = article.imageUrl,
@@ -88,34 +110,34 @@ fun CommonNewsDetailScreen(article: Article? , onBackButtonClick: () -> Unit) {
                         Text(
                             modifier = topBottomPadding,
                             text = article.title,
-                            style = MaterialTheme.typography.h5
+                            style = MaterialTheme.typography.h5,
                         )
 
                         Text(
                             modifier = Modifier.padding(top = 8.dp, bottom = 1.dp),
                             text = "Published by ${article.source}",
                             style = MaterialTheme.typography.overline,
-                            color = Color.Gray
+                            color = Color.Gray,
                         )
 
                         Text(
                             modifier = Modifier.padding(top = 1.dp, bottom = 8.dp),
                             text = formattedDateTime,
                             style = MaterialTheme.typography.overline,
-                            color = Color.Gray
+                            color = Color.Gray,
                         )
 
                         Text(
                             modifier = topBottomPadding,
                             text = article.description,
                             lineHeight = 22.sp,
-                            letterSpacing = 0.5.sp
+                            letterSpacing = 0.5.sp,
                         )
 
                         Text(
                             article.content,
                             lineHeight = 22.sp,
-                            letterSpacing = 0.5.sp
+                            letterSpacing = 0.5.sp,
                         )
                     }
                 }

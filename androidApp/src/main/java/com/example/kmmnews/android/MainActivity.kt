@@ -24,21 +24,20 @@ class MainActivity : ComponentActivity() {
             NavHost(navController, startDestination = "home") {
                 composable("home") {
                     NewsListScreen(selectedArticleAsJson = {
-//                        navController.navigate(route = "details/$it") // Todo: Use this code and pass the json to the next screen
-                        navController.navigate(route = "details/NotAnArticle")
+                        navController.navigate(route = "details/$it")
                     })
                 }
                 composable(
-                    "details/{article}",
+                    "details/{articleId}",
                     arguments = listOf(
-                        navArgument("article") {
-                            type = NavType.StringType
-                            defaultValue = ""
+                        navArgument("articleId") {
+                            type = NavType.LongType
+                            defaultValue = 0L
                         },
                     ),
                 ) {
                     NewsDetailScreen(
-                        article = it.arguments?.getString("article")!!,
+                        articleId = it.arguments?.getLong("articleId")!!,
                         onBackButtonClick = {
                             navController.navigateUp()
                         },

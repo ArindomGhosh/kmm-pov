@@ -1,6 +1,7 @@
 package com.example.kmmnews.shared
 
 import com.example.kmmnews.feature.news.di.viewModelModule
+import com.example.kmmnews.feature.news.presentation.screens.NewsDetailsScreenViewModel
 import com.example.kmmnews.feature.news.presentation.screens.NewsScreenViewModel
 import org.koin.core.Koin
 import org.koin.core.KoinApplication
@@ -26,4 +27,6 @@ fun KoinApplication.Companion.start(): KoinApplication = initKoin { }
 
 // todo: koin-compose issue https://github.com/InsertKoinIO/koin/issues/1588
 val Koin.getNewsScreenViewModel: NewsScreenViewModel
+    get() = get()
+val Koin.getNewsDetailsScreenViewModel: NewsDetailsScreenViewModel
     get() = get()
