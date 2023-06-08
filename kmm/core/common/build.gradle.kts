@@ -10,6 +10,7 @@ kotlin {
             dependencies {
                 implementation(compose.runtime)
                 implementation(libs.kotlinx.coroutines.core)
+                implementation(libs.koin.core)
             }
 
         }
