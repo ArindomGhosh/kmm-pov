@@ -1,14 +1,7 @@
 package com.example.kmmnews.feature.news.presentation.screens
 
-import androidx.compose.foundation.background
-import androidx.compose.foundation.layout.Arrangement
-import androidx.compose.foundation.layout.Column
-import androidx.compose.foundation.layout.fillMaxSize
-import androidx.compose.foundation.layout.fillMaxWidth
-import androidx.compose.foundation.layout.height
 import androidx.compose.material.Icon
 import androidx.compose.material.IconButton
-import androidx.compose.material.LinearProgressIndicator
 import androidx.compose.material.MaterialTheme
 import androidx.compose.material.Scaffold
 import androidx.compose.material.SnackbarResult
@@ -22,15 +15,13 @@ import androidx.compose.runtime.Composable
 import androidx.compose.runtime.collectAsState
 import androidx.compose.runtime.getValue
 import androidx.compose.runtime.rememberCoroutineScope
-import androidx.compose.ui.Alignment
-import androidx.compose.ui.Modifier
-import androidx.compose.ui.unit.dp
 import com.example.kmmnews.core.ui.KmmNewsTheme
+import com.example.kmmnews.core.ui.widgets.LoadingScreen
 import com.example.kmmnews.domain.news.entities.Article
 import kotlinx.coroutines.launch
 
 @Composable
-fun CommonNewsScreen(
+internal fun CommonNewsScreen(
     newsScreenViewModel: NewsScreenViewModel,
     onArticleSelected: (Article) -> Unit
 ) {
@@ -80,27 +71,8 @@ fun CommonNewsScreen(
 }
 
 @Composable
-fun NewsScreen(newsList: List<Article>, onArticleSelected: (Article) -> Unit) {
+internal fun NewsScreen(newsList: List<Article>, onArticleSelected: (Article) -> Unit) {
     Surface(color = MaterialTheme.colors.background) {
         NewsArticleList(articles = newsList, onArticleSelected = onArticleSelected)
-    }
-
-}
-
-@Composable
-fun LoadingScreen() {
-    //TODO : Can have its own custom theme, for now using the @KmmNewsTheme.
-    Column(
-        modifier = Modifier.fillMaxSize().background(MaterialTheme.colors.background),
-        verticalArrangement = Arrangement.Center,
-        horizontalAlignment = Alignment.CenterHorizontally,
-
-        ) {
-        LinearProgressIndicator(
-            modifier = Modifier
-                .fillMaxWidth()
-                .height(8.dp)
-
-        )
     }
 }

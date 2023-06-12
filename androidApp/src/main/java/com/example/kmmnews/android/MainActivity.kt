@@ -17,8 +17,6 @@ class MainActivity : ComponentActivity() {
         super.onCreate(savedInstanceState)
 
         setContent {
-            MaterialTheme() {
-            }
             val navController = rememberNavController()
 
             NavHost(navController, startDestination = "home") {
