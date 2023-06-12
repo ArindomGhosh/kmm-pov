@@ -17,6 +17,9 @@ kotlin {
                 implementation(project(":kmm:core:ui"))
                 implementation(project(":kmm:core:common"))
                 implementation(project(":kmm:domain:news"))
+                api("io.github.qdsfdhvh:image-loader:1.4.4")
+                implementation("org.jetbrains.kotlinx:kotlinx-datetime:0.4.0")
+                implementation("org.jetbrains.kotlinx:kotlinx-serialization-json:1.5.1")
             }
         }
         val commonTest by getting {
