@@ -5,7 +5,7 @@ import shared
 struct iOSApp: App {
 	var body: some Scene {
 		WindowGroup {
-            NewsListView( newsLisViewModel: KoinApplication.inject())
+            NewsListView(viewModel: NewsListViewModel(newsLisViewModel: KoinApplication.inject()))
 		}
 	}
 }
