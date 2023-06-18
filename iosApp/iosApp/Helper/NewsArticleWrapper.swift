@@ -33,6 +33,16 @@ class NewsArticleWrapper {
         article.source
     }
     
+    var publishedAt: String {
+        let dateFormatter = DateFormatter()
+        dateFormatter.dateFormat = "yyyy-MM-dd'T'HH:mm:ssZ"
+        if let date = dateFormatter.date(from: article.publishedAt) {
+            dateFormatter.dateFormat = "dd.MM.yyyy, hh:mm a"
+            return dateFormatter.string(from: date)
+        }
+        return article.publishedAt
+    }
+    
     var imageUrl: URL? {
         URL(string: article.imageUrl)
     }
