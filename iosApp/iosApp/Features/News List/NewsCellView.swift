@@ -10,8 +10,15 @@ import SwiftUI
 
 struct NewsCellView: View {
     
+    // MARK: - Properties
+    
+    /// The news article
     let news: NewsArticleWrapper
+    
+    /// Closure to call when tap on `Read More` button
     let onReadMore: () -> Void
+    
+    // MARK: - View Body
     
     var body: some View {
         ContentCardView {

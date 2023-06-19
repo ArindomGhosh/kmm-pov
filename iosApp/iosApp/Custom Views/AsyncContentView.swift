@@ -15,7 +15,7 @@ enum ViewState {
     case error
 }
 
-// The View will dynamically change its child view based on `ViewState` value
+// The View will dynamically change its child view based on `state` value
 struct AsyncContentView<Content, Loading, Empty, Error>: View where Content: View, Loading: View, Empty: View, Error: View {
     typealias ContentBuilder = () -> Content
     typealias LoadingBuilder = () -> Loading

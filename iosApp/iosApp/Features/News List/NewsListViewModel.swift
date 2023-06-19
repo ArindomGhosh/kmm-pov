@@ -9,21 +9,27 @@
 import Foundation
 import shared
 
-class NewsListViewModel: ObservableObject {
+final class NewsListViewModel: ObservableObject {
+    
+    // MARK: - Properties
     
     /// Instance of `NewsScreenViewModel` from KMM
     let newsScreenViewModel: NewsScreenViewModel
     
-    // MARK: - Published properties
+    /// UI state of the View - loading, content, empty or error
     @Published var viewState: ViewState = .empty
+    
+    /// List of the news fetched from API
     @Published var newsList: [Article] = []
+    
+    /// API error message if any
     @Published var errorMessage: String?
     
     
     // MARK: - Initializer
     /// Parameters
     /// - newsScreenViewModel: ViewModel from KMM to fetch news
-    init(newsScreenViewModel: NewsScreenViewModel) {
+    init(newsScreenViewModel: NewsScreenViewModel = KoinApplication.inject()) {
         self.newsScreenViewModel = newsScreenViewModel
         viewState = .loading
     }
@@ -35,7 +41,7 @@ class NewsListViewModel: ObservableObject {
     // MARK: - Functions
     
     /// Observe stream of news using `FlowCollector`
-    func observeNewsFeed() {
+    func observeNewsListUIState() {
         newsScreenViewModel.uiState.collect(collector: FlowCollector<NewsUiState> { [weak self] state in
             guard let self else {
                 return
@@ -57,12 +63,10 @@ class NewsListViewModel: ObservableObject {
     
     private func handleUIState(_ state: NewsUiState) {
         if let _ = state as? NewsUiStateLoading {
-            print("Loading News...")
             viewState = .loading
         }
         else if let loaded = state as? NewsUiStateLoaded {
             newsList = loaded.newsList
-            print("Loaded \(newsList.count) News")
             viewState = .content
         }
         else if let error = state as? NewsUiStateError {
@@ -70,6 +74,4 @@ class NewsListViewModel: ObservableObject {
             viewState = .error
         }
     }
-    
-    
 }

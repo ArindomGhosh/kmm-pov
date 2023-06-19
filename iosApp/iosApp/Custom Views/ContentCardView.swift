@@ -8,6 +8,7 @@
 
 import SwiftUI
 
+// The container view to have corner radius and shadow
 struct ContentCardView<Content: View>: View {
     let contentView: () -> Content
     

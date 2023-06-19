@@ -7,17 +7,17 @@ struct NewsListView: View {
     @ObservedObject var viewModel: NewsListViewModel
     
     /// News thats has selected to read more about
-    @State var selectedNews: NewsArticleWrapper? = nil
+    @State var selectedNewsId: Int64? = nil
     
     /// Flag to activate navigation when selectedNew updated
     var isNewsSelected: Binding<Bool> {
         Binding<Bool>(
             get: {
-                selectedNews != nil
+                selectedNewsId != nil
             },
             set: { isActive in
                 if !isActive {
-                    selectedNews = nil
+                    selectedNewsId = nil
                 }
             }
         )
@@ -28,11 +28,7 @@ struct NewsListView: View {
     /// - viewModel: ViewModel to handle business logic for the view
     init(viewModel: NewsListViewModel) {
         self.viewModel = viewModel
-        viewModel.observeNewsFeed()
-        
-        /// Hide the List row separator, works for all iOS version.
-        /// Remove this when minimum deployment target is set to iOS 15, instead use the modifier `.listRowSeparator(.hidden)` on each row of the List.
-        // UITableView.appearance().separatorStyle = .none
+        viewModel.observeNewsListUIState()
     }
     
     // MARK: - View body
@@ -55,12 +51,7 @@ struct NewsListView: View {
     
     /// View to be be displayed while fetching the news
     private var loadingView: some View {
-        VStack {
-            ProgressView()
-            Spacer()
-                .frame(height: 8.0)
-            Text("Loading...")
-        }
+        SimpleLoader()
     }
     
     /// View to be displayed after loading the news and at least 1 news article is available
@@ -69,7 +60,7 @@ struct NewsListView: View {
             List(viewModel.newsList) { article in
                 let wrapper = NewsArticleWrapper(article: article)
                 NewsCellView(news: wrapper) {
-                    selectedNews = wrapper
+                    selectedNewsId = wrapper.articleId
                 }
                 .listRowSeparator(.hidden)
             }
@@ -104,8 +95,8 @@ struct NewsListView: View {
     /// View for news details, to be navigate to when a news is selected from the list
     @ViewBuilder
     var newsDetailsView: some View {
-        if let news = selectedNews  {
-            NewsDetailsView(news: news)
+        if let newsId = selectedNewsId  {
+            NewsDetailsView(viewModel: NewsDetailsViewModel(articleId: newsId))
         }
     }
 }
@@ -114,6 +105,6 @@ struct NewsListView: View {
 
 struct ContentView_Previews: PreviewProvider {
 	static var previews: some View {
-        NewsListView(viewModel: NewsListViewModel(newsScreenViewModel: KoinApplication.inject()))
+        NewsListView(viewModel: NewsListViewModel())
 	}
 }
