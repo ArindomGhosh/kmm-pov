@@ -9,7 +9,7 @@
 import Foundation
 import shared
 
-extension NewsArticle: Identifiable {
+extension Article: Identifiable {
     /// Conforming to `Identifiable` protocol not required here i.e.
     /// May be because `NewsArticle`  have the `hash()` function that might be fullfilling the requirement of the `id` property.
     /*

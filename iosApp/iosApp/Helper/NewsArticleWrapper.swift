@@ -11,10 +11,14 @@ import shared
 
 class NewsArticleWrapper {
     
-    private let article: NewsArticle
+    private let article: Article
     
-    init(article: NewsArticle) {
+    init(article: Article) {
         self.article = article
+    }
+    
+    var articleId : Int64 {
+        article.articleId
     }
     
     var title: String {

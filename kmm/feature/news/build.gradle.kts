@@ -1,22 +1,16 @@
 plugins {
     id("com.kmmnews.kotlin.multiplatform.library")
-    alias(libs.plugins.jetbrains.compose)
 }
 
 kotlin {
     sourceSets {
         val commonMain by getting {
             dependencies {
-                implementation(compose.runtime)
-                implementation(compose.foundation)
-                implementation(compose.ui)
-                implementation(compose.material)
                 implementation(libs.koin.core)
-//                implementation(libs.koin.compose)
                 implementation(libs.kotlinx.coroutines.core)
-                implementation(project(":kmm:core:ui"))
                 implementation(project(":kmm:core:common"))
-                implementation(project(":kmm:domain:news"))
+                api(project(":kmm:core:domain"))
+                implementation(project(":kmm:core:data"))
             }
         }
         val commonTest by getting {
@@ -24,9 +18,9 @@ kotlin {
                 implementation(kotlin("test"))
             }
         }
-        val androidMain by getting {
+        val androidMain by getting{
             dependencies{
-                implementation(libs.koin.androidx.compose)
+                implementation(libs.androidx.lifecycle.viewmodel)
             }
         }
         val androidUnitTest by getting

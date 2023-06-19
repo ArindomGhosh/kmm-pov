@@ -16,7 +16,7 @@ class NewsListViewModel: ObservableObject {
     
     // MARK: - Published properties
     @Published var viewState: ViewState = .empty
-    @Published var newsList: [NewsArticle] = []
+    @Published var newsList: [Article] = []
     @Published var errorMessage: String?
     
     
@@ -26,6 +26,10 @@ class NewsListViewModel: ObservableObject {
     init(newsScreenViewModel: NewsScreenViewModel) {
         self.newsScreenViewModel = newsScreenViewModel
         viewState = .loading
+    }
+    
+    deinit {
+        newsScreenViewModel.clear()
     }
     
     // MARK: - Functions
@@ -66,4 +70,6 @@ class NewsListViewModel: ObservableObject {
             viewState = .error
         }
     }
+    
+    
 }

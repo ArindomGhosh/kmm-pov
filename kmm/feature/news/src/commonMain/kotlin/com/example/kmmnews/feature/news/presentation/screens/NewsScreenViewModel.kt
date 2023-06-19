@@ -3,8 +3,8 @@ package com.example.kmmnews.feature.news.presentation.screens
 import com.example.kmmnews.core.common.ViewModel
 import com.example.kmmnews.domain.common.entities.Entity
 import com.example.kmmnews.domain.common.entities.ErrorEntity
-import com.example.kmmnews.domain.news.entities.Article
-import com.example.kmmnews.domain.news.usecases.GetNationalNews
+import com.example.kmmnews.feature.news.domain.entities.Article
+import com.example.kmmnews.feature.news.domain.usecases.GetNationalNews
 import kotlinx.coroutines.flow.MutableStateFlow
 import kotlinx.coroutines.flow.StateFlow
 import kotlinx.coroutines.flow.asStateFlow

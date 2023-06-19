@@ -12,6 +12,7 @@ kotlin {
                 implementation(libs.kotlinx.coroutines.core)
                 implementation(libs.ktor.serialization.kotlinx.json)
                 implementation(project(":kmm:core:network"))
+                implementation(project(":kmm:core:database"))
                 implementation(project(":kmm:core:common"))
             }
         }

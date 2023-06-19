@@ -21,7 +21,7 @@ extension KoinApplication {
 }
 
 extension KoinApplication {
-    private static let keyPaths: [PartialKeyPath<Koin>] = [\.getNewsScreenViewModel]
+    private static let keyPaths: [PartialKeyPath<Koin>] = [\.getNewsScreenViewModel, \.getNewsDetailsScreenViewModel]
 
     static func inject<T>() -> T {
         shared.inject()

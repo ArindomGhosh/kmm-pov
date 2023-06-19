@@ -13,6 +13,9 @@ dependencyResolutionManagement {
         google()
         mavenCentral()
         maven("https://maven.pkg.jetbrains.space/public/p/compose/dev")
+        maven {
+            url = uri("https://repo.repsy.io/mvn/chrynan/public")
+        }
     }
 }
 
@@ -22,7 +25,7 @@ include(":kmm:shared")
 include(":kmm:core:network")
 include(":kmm:feature:news")
 include(":kmm:core:ui")
-include(":kmm:domain:news")
 include(":kmm:core:data")
 include(":kmm:core:common")
-include(":kmm:domain:common")
+include(":kmm:core:domain")
+include(":kmm:core:database")
