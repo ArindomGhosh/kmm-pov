@@ -10,9 +10,42 @@ import SwiftUI
 
 struct NewsDetailsView: View {
     
-    let news: NewsArticleWrapper
+    // MARK: - Properties
+    
+    /// ViewModel for the View
+    @ObservedObject var viewModel: NewsDetailsViewModel
+    
+    // MARK: - Initializer
+    /// Parameters
+    /// - viewModel: Handles business logic of the View
+    init(viewModel: NewsDetailsViewModel) {
+        self.viewModel = viewModel
+        viewModel.loadNewsDetails()
+    }
+    
+    // MARK: - View Body
     
     var body: some View {
+        AsyncContentView(state: $viewModel.viewState) {
+            newsDetailsView
+        } loadingView: {
+            loadingView
+        } emptyView: {
+            EmptyView()
+        } errorView: {
+            EmptyView()
+        }
+        .navigationTitle(viewModel.source)
+        .navigationBarTitleDisplayMode(.inline)
+    }
+    
+    /// View to be be displayed while fetching the news details
+    private var loadingView: some View {
+        SimpleLoader(message: "Loading News Details")
+    }
+    
+    /// View to be displayed after loading the news details
+    private var newsDetailsView: some View {
         ScrollView {
             VStack(alignment: .leading) {
                 imageView
@@ -26,12 +59,10 @@ struct NewsDetailsView: View {
                 .padding()
             }
         }
-        .navigationTitle(news.source)
-        .navigationBarTitleDisplayMode(.inline)
     }
     
     private var imageView: some View {
-        AsyncImage(url: news.imageUrl) { image in
+        AsyncImage(url: viewModel.imageUrl) { image in
             image
                 .resizable()
                 .aspectRatio(contentMode: .fill)
@@ -43,29 +74,29 @@ struct NewsDetailsView: View {
     }
     
     private var titleText: some View {
-        Text(news.title)
+        Text(viewModel.title)
             .font(.headline)
     }
     
     private var publishedByText: some View {
-        Text("Published by \(news.source)")
+        Text("Published by \(viewModel.source)")
             .foregroundColor(Color.gray)
             .font(.caption)
     }
     
     private var publishedAtText: some View {
-        Text(news.publishedAt)
+        Text(viewModel.publishedAt)
             .foregroundColor(Color.gray)
             .font(.caption)
     }
     
     private var descriptionText: some View {
-        Text(news.description)
+        Text(viewModel.description)
             .font(.subheadline)
     }
     
     private var contentText: some View {
-        Text(news.content)
+        Text(viewModel.content)
             .font(.subheadline)
             .padding(.top, 8.0)
     }
