@@ -17,7 +17,7 @@ fun initKoin(appDeclaration: KoinAppDeclaration = {}) =
         )
     }
 
-internal val featureModules = module {
+val featureModules = module {
     includes(
         viewModelModule
     )

@@ -10,7 +10,7 @@ actual abstract class ViewModel {
         get() = CoroutineScope(SupervisorJob() + Dispatchers.Main.immediate)
 
     fun clear() {
-        viewModelScope.cancel()
+        viewModelScope.coroutineContext.cancel()
         onCleared()
     }
 

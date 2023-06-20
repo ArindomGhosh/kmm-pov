@@ -1,6 +1,5 @@
 plugins {
     id("com.kmmnews.kotlin.multiplatform")
-    alias(libs.plugins.jetbrains.compose)
 }
 
 kotlin {
@@ -13,7 +12,6 @@ kotlin {
     ).forEach {
         it.binaries.framework {
             baseName = "shared"
-            isStatic = true
             linkerOpts.add("-lsqlite3")
             export(project(":kmm:feature:news"))
             export(project(":kmm:core:common"))
@@ -25,10 +23,6 @@ kotlin {
     sourceSets {
         val commonMain by getting {
             dependencies {
-                implementation(compose.runtime)
-                implementation(compose.foundation)
-                implementation(compose.ui)
-                implementation(compose.material)
                 implementation(libs.koin.core)
                 implementation(libs.kotlinx.coroutines.core)
                 api(project(":kmm:feature:news"))

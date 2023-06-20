@@ -24,6 +24,11 @@ dependencies {
     implementation(compose.material)
     implementation(libs.koin.android)
     implementation(libs.koin.androidx.compose)
-    implementation("androidx.navigation:navigation-compose:2.5.3")
-    implementation("org.jetbrains.kotlinx:kotlinx-coroutines-android:1.7.1")
+    implementation(libs.kotlinx.datetime)
+    implementation(libs.androidx.navigation.compose)
+    implementation(project(":kmm:core:ui"))
+    implementation(project(":kmm:core:common"))
+    implementation(libs.kotlinx.coroutines.android)
+    implementation(libs.image.loader)
+    implementation(libs.lifecycle.runtime.compose)
 }

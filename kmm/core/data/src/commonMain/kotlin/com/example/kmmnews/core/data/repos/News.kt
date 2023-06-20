@@ -23,7 +23,7 @@ interface News {
     suspend fun getNewsArticleForId(id: Long): NewsArticle
 }
 
-class NewsImpl(
+internal class NewsImpl(
     private val newsApiService: NewsApiService,
     private val kmmNewsArticlesDao: KmmNewsArticlesDao,
     private val ioDispatcher: CoroutineDispatcher,
