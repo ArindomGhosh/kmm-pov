@@ -3,8 +3,6 @@
 :point_right: **[KMM](https://kotlinlang.org/docs/multiplatform.html)** is a framework developed and maintained by [jetbrains](https://www.jetbrains.com/) designed to share code across platforms primarily targeting: Android, iOS, Desktop, Web. So that the developers can share their modules developed in [Kotlin](https://kotlinlang.org/) across different platform :heart_eyes:.
 
 ## KMM Layers
-<img width="806" alt="Screenshot 2023-05-22 at 11 52 49 AM" src="https://github.com/Deloitte/dd-poc-kmm/assets/70739057/e69e0ea4-ad7b-47ea-9add-665d00ef194b">
-
 
 ## How does it work and how its different from other Cross-Platform application? :monocle_face:
 :point_right: First of all **KMM** is not a *Cross Platform* in a conventional sense :astonished:. KMM relies on [Kotlin](https://kotlinlang.org/) compiler to generate binaries for native platfoms using **Kotlin compiler backend** which could be called from **Native Platforms** :smirk:.\
@@ -35,8 +33,6 @@ The goal of the project is to explore [KMM](https://kotlinlang.org/docs/multipla
 - :card_index_dividers: Impact on .apk and .ipa sizes while sharing logic across platforms.
 
 ### KMM News architecture 👇
-
-<img width="1383" alt="Screenshot 2023-05-24 at 5 00 47 PM" src="https://github.com/Deloitte/dd-poc-kmm/assets/70739057/30bd47a4-3082-4f73-8870-ecdac1c589d3">
 
 ## 🎯 When to choose KMM ?
 
